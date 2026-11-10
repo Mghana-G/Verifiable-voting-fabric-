@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Public verifier</title>
+<link rel="stylesheet" href="/css/ui.css">
+<style>
+.bars { display: grid; gap: 10px; }
+.bar { display: grid; grid-template-columns: minmax(120px, 210px) 1fr 70px; gap: 10px; align-items: center; }
+.bar .track { background: var(--soft); border-radius: 6px; height: 26px; overflow: hidden; }
+.bar .fill { height: 100%; border-radius: 6px; transition: width .6s; min-width: 2px; }
+.inv { display: flex; align-items: center; gap: 14px; }
+.inv .mark { font-size: 3rem; line-height: 1; font-weight: 700; }
+.inv .ok { color: var(--ok); } .inv .no { color: var(--bad); }
+.peers { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.peer { border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+.peer h4 { margin: 0 0 6px; }
+.chain { display: flex; gap: 0; overflow-x: auto; padding: 8px 2px 14px; align-items: stretch; }
+.blk { min-width: 76px; border: 2px solid var(--ok); border-radius: 8px; padding: 6px; font-size: .75rem; background: var(--card); text-align: center; }
+.blk.bad { border-color: var(--bad); background: var(--bad-bg); }
+.link { align-self: center; width: 18px; height: 4px; background: var(--ok); flex: none; }
+.link.bad { background: var(--bad); } .link.na { background: var(--line); }
+.limits li { margin: 6px 0; }
+.privgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+</style>
+</head>
+<body class="role-verify">
+<div class="topbar role-verify">
+  <h1>Public verifier</h1><span class="role">No sign-in</span>
+  <span class="right"><a class="btn" href="/">Home</a><button type="button" class="btn" data-theme-toggle>Light / dark</button></span>
+</div>
+<main>
+  <div class="tabs" role="tablist" id="tabs">
+    <button role="tab" data-tab="results" aria-selected="true">Results</button>
+    <button role="tab" data-tab="ballot" aria-selected="false">Verify my ballot</button>
+    <button role="tab" data-tab="chain" aria-selected="false">Chain integrity</button>
+    <button role="tab" data-tab="privacy" aria-selected="false">Privacy check</button>
+    <button role="tab" data-tab="limits" aria-selected="false">What this proves</button>
+  </div>
+  <div id="pane"></div>
+</main>
+<script src="/js/common.js"></script>
+<script src="/js/verify.js"></script>
+</body>
+</html>

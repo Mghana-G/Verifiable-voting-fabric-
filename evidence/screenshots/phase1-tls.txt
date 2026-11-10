@@ -1,0 +1,18 @@
+Phase 1 TLS evidence — Mon Sep 21 07:48:21 PM UTC 2026
+
+=== openssl s_client output (peer0.orgiebc:7051) ===
+-----BEGIN CERTIFICATE-----
+-----END CERTIFICATE-----
+subject=C = US, ST = California, L = San Francisco, CN = peer0.orgiebc.example.com
+issuer=C = US, ST = California, L = San Francisco, O = orgiebc.example.com, CN = tlsca.orgiebc.example.com
+SSL handshake has read 1617 bytes and written 387 bytes
+New, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256
+Verify return code: 0 (ok)
+
+=== peer0.orgiebc docker log (TLS line) ===
+[34m2026-09-21 19:47:24.101 UTC 0008 INFO[0m [nodeCmd] [34;1mserve[0m -> Starting peer with TLS enabled
+
+=== orderer1 docker log (TLS line) ===
+	General.TLS.Enabled = true
+	General.TLS.PrivateKey = "/var/hyperledger/orderer/tls/server.key"
+	General.TLS.Certificate = "/var/hyperledger/orderer/tls/server.crt"

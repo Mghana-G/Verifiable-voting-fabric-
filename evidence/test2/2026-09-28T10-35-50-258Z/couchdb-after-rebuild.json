@@ -1,0 +1,13 @@
+{
+  "_id": "\u0000TALLY\u0000test2-run2-1790591750259\u0000C001\u0000",
+  "_rev": "1-c0e74c8b161a984bbc8adb9385a5b1e9",
+  "~version": "CgQCC7oA",
+  "_attachments": {
+    "valueBytes": {
+      "content_type": "application/octet-stream",
+      "revpos": 1,
+      "digest": "md5-xMpCOKC5I4INzFCab3WEmw==",
+      "data": "MQ=="
+    }
+  }
+}

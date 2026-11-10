@@ -1,0 +1,19 @@
+{
+  "test": "7-concurrency-probe",
+  "scale": 500,
+  "electionID": "perf-conc-500-1790635931797",
+  "windowSize": 10,
+  "maxRetries": 5,
+  "pass": true,
+  "firstAttemptCommitted": 167,
+  "firstAttemptMvccConflicts": 333,
+  "firstAttemptOtherFail": 0,
+  "mvccConflictRate": 0.666,
+  "totalRetries": 1488,
+  "finalCommitted": 276,
+  "invariant": {
+    "burnedCount": 276,
+    "tallyTotal": 276
+  },
+  "invariantOK": true
+}

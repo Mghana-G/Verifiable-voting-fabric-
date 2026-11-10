@@ -1,0 +1,29 @@
+{
+  "test": "4b",
+  "runIndex": 2,
+  "electionID": "test4b-run2-1790591205189",
+  "pass": true,
+  "vatID": "a325edec577eb9d9b8a6cb9a6272e1e3510a5ea287913f7f7bc4fad75da3f064",
+  "originalCommitted": true,
+  "originalResult": {
+    "ballotID": "a2a01980af1c28af8c22a4d048eaba8e9b55c154fc776801feed65c2e7bb2cff",
+    "vatID": "a325edec577eb9d9b8a6cb9a6272e1e3510a5ea287913f7f7bc4fad75da3f064",
+    "candidateID": "C001",
+    "electionID": "test4b-run2-1790591205189",
+    "timestamp": 1790591207
+  },
+  "invariantBefore": {
+    "burnedCount": 1,
+    "tallyTotal": 1
+  },
+  "replayError": "10 ABORTED: failed to endorse transaction, see attached details for more info || chaincode response 500, ERR_NONCE_USED",
+  "replayRejected": true,
+  "containsNonceUsed": true,
+  "containsVatNotActive": false,
+  "containsBadSignature": false,
+  "invariantAfter": {
+    "burnedCount": 1,
+    "tallyTotal": 1
+  },
+  "invariantUnchanged": true
+}

@@ -1,0 +1,31 @@
+Phase 0 exit-gate evidence — test-network invoke and query
+Date: 2026-09-21T16:03 EAT
+Host: Ubuntu 24.04 Server VM
+Fabric version: 2.5.12
+Channel: mychannel
+Chaincode: basic (asset-transfer-basic, JavaScript)
+
+=== Invoke: InitLedger ===
+Command:
+  peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com \
+    --tls --cafile .../tlsca.example.com-cert.pem \
+    -C mychannel -n basic \
+    --peerAddresses localhost:7051 ... --peerAddresses localhost:9051 ... \
+    -c '{"function":"InitLedger","Args":[]}'
+
+Result:
+  Chaincode invoke successful. result: status:200
+
+=== Query: GetAllAssets ===
+Command:
+  peer chaincode query -C mychannel -n basic -c '{"Args":["GetAllAssets"]}'
+
+Result:
+[{"AppraisedValue":300,"Color":"blue","ID":"asset1","Owner":"Tomoko","Size":5,"docType":"asset"},
+ {"AppraisedValue":400,"Color":"red","ID":"asset2","Owner":"Brad","Size":5,"docType":"asset"},
+ {"AppraisedValue":500,"Color":"green","ID":"asset3","Owner":"Jin Soo","Size":10,"docType":"asset"},
+ {"AppraisedValue":600,"Color":"yellow","ID":"asset4","Owner":"Max","Size":10,"docType":"asset"},
+ {"AppraisedValue":700,"Color":"black","ID":"asset5","Owner":"Adriana","Size":15,"docType":"asset"},
+ {"AppraisedValue":800,"Color":"white","ID":"asset6","Owner":"Michel","Size":15,"docType":"asset"}]
+
+6 assets returned. Invoke and query both successful.

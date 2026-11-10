@@ -1,0 +1,16 @@
+#!/bin/sh
+# External builder "build" script for the node-docker builder (DEV-002/DEV-006).
+# Intentionally a no-op: the actual chaincode Docker image is pre-built on the
+# host directly (network/scripts/05-deploy-chaincode.sh, "pre-build chaincode
+# images" step) because the peer's internal Docker client cannot call Docker
+# 29.x's /build API (DEV-001). This script only needs to succeed so
+# `peer lifecycle chaincode install` proceeds; `run` (chaincode-run-builder.sh)
+# does not read anything from BUILD_OUTPUT_DIR — it derives the image name and
+# connection details entirely from chaincode.json at run time.
+# Args per the Fabric external builder protocol:
+#   $1 = chaincode source dir   $2 = metadata dir   $3 = build output dir
+set -e
+BUILD_OUTPUT_DIR="$3"
+mkdir -p "${BUILD_OUTPUT_DIR}"
+cp "$2/metadata.json" "${BUILD_OUTPUT_DIR}/" 2>/dev/null || true
+exit 0

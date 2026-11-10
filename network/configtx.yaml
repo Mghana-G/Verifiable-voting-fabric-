@@ -1,0 +1,205 @@
+Organizations:
+  - &OrgOrderer
+    Name: OrgOrdererMSP
+    ID: OrgOrdererMSP
+    MSPDir: organizations/ordererOrganizations/orgorderer.example.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrgOrdererMSP.member')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrgOrdererMSP.member')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrgOrdererMSP.admin')"
+    OrdererEndpoints:
+      - orderer1.orgorderer.example.com:7050
+      - orderer2.orgorderer.example.com:8050
+      - orderer3.orgorderer.example.com:9050
+
+  - &OrgIEBC
+    Name: OrgIEBCMSP
+    ID: OrgIEBCMSP
+    MSPDir: organizations/peerOrganizations/orgiebc.example.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrgIEBCMSP.admin', 'OrgIEBCMSP.peer', 'OrgIEBCMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrgIEBCMSP.admin', 'OrgIEBCMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrgIEBCMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('OrgIEBCMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.orgiebc.example.com
+        Port: 7051
+
+  - &OrgJudiciary
+    Name: OrgJudiciaryMSP
+    ID: OrgJudiciaryMSP
+    MSPDir: organizations/peerOrganizations/orgjudiciary.example.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrgJudiciaryMSP.admin', 'OrgJudiciaryMSP.peer', 'OrgJudiciaryMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrgJudiciaryMSP.admin', 'OrgJudiciaryMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrgJudiciaryMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('OrgJudiciaryMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.orgjudiciary.example.com
+        Port: 7061
+
+  - &OrgCivilSociety
+    Name: OrgCivilSocietyMSP
+    ID: OrgCivilSocietyMSP
+    MSPDir: organizations/peerOrganizations/orgcivilsociety.example.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrgCivilSocietyMSP.admin', 'OrgCivilSocietyMSP.peer', 'OrgCivilSocietyMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrgCivilSocietyMSP.admin', 'OrgCivilSocietyMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrgCivilSocietyMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('OrgCivilSocietyMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.orgcivilsociety.example.com
+        Port: 7071
+
+  - &OrgMedia
+    Name: OrgMediaMSP
+    ID: OrgMediaMSP
+    MSPDir: organizations/peerOrganizations/orgmedia.example.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrgMediaMSP.admin', 'OrgMediaMSP.peer', 'OrgMediaMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrgMediaMSP.admin', 'OrgMediaMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrgMediaMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('OrgMediaMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.orgmedia.example.com
+        Port: 7081
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+  Orderer: &OrdererCapabilities
+    V2_0: true
+  Application: &ApplicationCapabilities
+    V2_5: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+  EtcdRaft:
+    Consenters:
+      - Host: orderer1.orgorderer.example.com
+        Port: 7050
+        ClientTLSCert: organizations/ordererOrganizations/orgorderer.example.com/orderers/orderer1.orgorderer.example.com/tls/server.crt
+        ServerTLSCert: organizations/ordererOrganizations/orgorderer.example.com/orderers/orderer1.orgorderer.example.com/tls/server.crt
+      - Host: orderer2.orgorderer.example.com
+        Port: 8050
+        ClientTLSCert: organizations/ordererOrganizations/orgorderer.example.com/orderers/orderer2.orgorderer.example.com/tls/server.crt
+        ServerTLSCert: organizations/ordererOrganizations/orgorderer.example.com/orderers/orderer2.orgorderer.example.com/tls/server.crt
+      - Host: orderer3.orgorderer.example.com
+        Port: 9050
+        ClientTLSCert: organizations/ordererOrganizations/orgorderer.example.com/orderers/orderer3.orgorderer.example.com/tls/server.crt
+        ServerTLSCert: organizations/ordererOrganizations/orgorderer.example.com/orderers/orderer3.orgorderer.example.com/tls/server.crt
+    Options:
+      TickInterval: 500ms
+      ElectionTick: 10
+      HeartbeatTick: 1
+      MaxInflightBlocks: 5
+      SnapshotIntervalSize: 16 MB
+  BatchTimeout: 500ms
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+  Capabilities:
+    <<: *OrdererCapabilities
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+  VotingChannel:
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+        - *OrgOrderer
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *OrgIEBC
+        - *OrgJudiciary
+        - *OrgCivilSociety
+        - *OrgMedia

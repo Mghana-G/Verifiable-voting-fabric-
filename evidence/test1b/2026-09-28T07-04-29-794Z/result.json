@@ -1,0 +1,48 @@
+{
+  "test": "1b",
+  "runIndex": 3,
+  "electionID": "test1b-run3-1790579069795",
+  "pass": true,
+  "vatID": "a2ccc593c370743d87200aa4dd93480f918ebd7f9e67f177f65d635d10286567",
+  "outcomeA": {
+    "label": "A",
+    "settled": "fulfilled",
+    "successful": true,
+    "code": 0,
+    "transactionId": "1348b99731bd0a0820b46d4f11aae54f923124f3adfdc0611688931b18f21d79",
+    "blockNumber": "299"
+  },
+  "outcomeB": {
+    "label": "B",
+    "settled": "fulfilled",
+    "successful": false,
+    "code": 11,
+    "transactionId": "96ad9c451b964d412ce17888ca0671fc7f9059cc3892ee6b88157a6c06bc82e5",
+    "blockNumber": "299"
+  },
+  "blocksInvolved": [
+    299
+  ],
+  "blockDecodes": [
+    {
+      "blockNumber": 299,
+      "codes": [
+        0,
+        11
+      ],
+      "labels": [
+        "VALID",
+        "MVCC_READ_CONFLICT"
+      ],
+      "numTx": 2
+    }
+  ],
+  "successCount": 1,
+  "mvccConflictCount": 1,
+  "invariant": {
+    "burnedCount": 1,
+    "tallyTotal": 1
+  },
+  "invariantOK": true,
+  "blockCorroboration": true
+}

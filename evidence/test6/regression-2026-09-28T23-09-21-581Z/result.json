@@ -1,0 +1,17 @@
+{
+  "test": "6",
+  "runIndex": 1,
+  "electionID": "test6-run1-1790636961586757438",
+  "invokeExitCode": 0,
+  "blockNumber": 25483,
+  "txValidationCodes": [
+    10
+  ],
+  "txValidationLabels": [
+    "ENDORSEMENT_POLICY_FAILURE"
+  ],
+  "tallyBefore": {},
+  "tallyAfter": {},
+  "tallyUnchanged": true,
+  "pass": true
+}

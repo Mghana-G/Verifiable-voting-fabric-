@@ -1,0 +1,4 @@
+Superseded by the 500ms-BatchTimeout orderer tuning (DEV-006): this run used
+the original 2s BatchTimeout, so its per-vote latency is not comparable to
+the reruns done after network reconfiguration. Kept as historical evidence,
+not deleted, per CLAUDE.md rule 9 and explicit instruction.

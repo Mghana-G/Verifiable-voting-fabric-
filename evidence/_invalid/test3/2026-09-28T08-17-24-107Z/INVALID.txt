@@ -1,0 +1,13 @@
+This test3 run (run 2 of 3, 1000-vote parity sweep) was interrupted mid-execution
+when the host VM was suspended. Progress before suspension: 200/1000 votes
+committed (per evidence/run-all-2026-09-28T07-04-01-296Z.log). No result.json or
+votes.csv was ever written because the process was terminated (SIGTERM to the
+process group) partway through the vote loop, before reaching the end-of-run
+evidence-write step. The directory was moved here rather than deleted, per
+CLAUDE.md rule 9 (never delete the evidence/ directory) and explicit instruction
+to never delete evidence.
+
+Moved: 2026-09-28, following VM suspend/resume recovery.
+Original path: evidence/test3/2026-09-28T08-17-24-107Z/
+Valid replacement runs: see evidence/test3/ (run1 from this suite, kept in
+place; runs 2 and 3 to be redone with the faster concurrent-mint test3 flow).

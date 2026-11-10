@@ -1,0 +1,27 @@
+[
+  {
+    "key": "votingchannel_voting",
+    "info": {
+      "instance_start_time": "1790593617",
+      "db_name": "votingchannel_voting",
+      "purge_seq": "0-g1AAAABPeJzLYWBgYMpgTmHgzcvPy09JdcjLz8gvLskBCeexAEmGBiD1HwiyEhlwqEtkSKqHKMgCAIT2GV4",
+      "update_seq": "136992-g1AAAACReJzLYWBgYMpgTmHgzcvPy09JdcjLz8gvLskBCeexAEmGBiD1HwiyMpiTGBhtenKBYuyW5iYpKYmp6NpwGJTIkFQPM4Hh1hSwCUYGJommKebo6rMAIMIs7A",
+      "sizes": {
+        "file": 69976490,
+        "external": 6846322,
+        "active": 32440963
+      },
+      "props": {},
+      "doc_del_count": 0,
+      "doc_count": 72700,
+      "disk_format_version": 8,
+      "compact_running": false,
+      "cluster": {
+        "q": 2,
+        "n": 1,
+        "w": 1,
+        "r": 1
+      }
+    }
+  }
+]

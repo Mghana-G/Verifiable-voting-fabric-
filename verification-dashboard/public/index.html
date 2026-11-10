@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>E-Voting Verification Dashboard</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    --bg: #0f172a; --surface: #1e293b; --border: #334155;
+    --text: #e2e8f0; --muted: #94a3b8;
+    --green: #22c55e; --red: #ef4444; --yellow: #eab308;
+    --blue: #38bdf8;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+  body { background: var(--bg); color: var(--text); margin: 0; padding: 1.5rem; }
+  h1   { font-size: 1.4rem; margin-bottom: 1.5rem; color: var(--blue); }
+  h2   { font-size: 1rem; color: var(--muted); margin: 1.5rem 0 .5rem; text-transform: uppercase; letter-spacing: .05em; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: .5rem; padding: 1rem; margin-bottom: 1rem; }
+  .invariant { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .badge { font-size: 1.4rem; font-weight: 700; padding: .25rem .75rem; border-radius: .25rem; }
+  .badge.pass { background: var(--green); color: #052e16; }
+  .badge.fail { background: var(--red);  color: #450a0a; }
+  .kv { display: flex; flex-direction: column; }
+  .kv small { color: var(--muted); font-size: .75rem; }
+  .kv span  { font-size: 1.25rem; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+  th, td { padding: .5rem .75rem; border-bottom: 1px solid var(--border); text-align: left; }
+  th { color: var(--muted); font-weight: 500; }
+  .valid  { color: var(--green); }
+  .invalid{ color: var(--red); }
+  .blocks-table td:first-child { font-variant-numeric: tabular-nums; width: 5rem; }
+  .tx-row td { padding: .25rem .75rem; font-size: .8rem; border: none; }
+  .election-bar { display:flex; gap:.75rem; align-items:center; margin-bottom:1rem; }
+  .election-bar input { background: var(--surface); border:1px solid var(--border); color: var(--text); padding:.4rem .6rem; border-radius:.25rem; font-size:.875rem; width:14rem; }
+  .election-bar button { background: var(--blue); color:#0c1a2e; border:none; border-radius:.25rem; padding:.4rem .8rem; font-size:.875rem; cursor:pointer; font-weight:600; }
+  #status { font-size:.75rem; color: var(--muted); float:right; }
+</style>
+</head>
+<body>
+<h1>&#x1F5F3; E-Voting Verification Dashboard</h1>
+<span id="status">loading…</span>
+
+<div class="election-bar">
+  <label for="electionInput" style="color:var(--muted);font-size:.875rem;">Election ID</label>
+  <input id="electionInput" value="election2027" placeholder="election2027"/>
+  <button onclick="refresh()">Refresh</button>
+</div>
+
+<h2>Audit Invariant</h2>
+<div class="card">
+  <div class="invariant">
+    <span id="invariant-badge" class="badge">--</span>
+    <div class="kv"><small>Burned (VATs)</small><span id="burned">--</span></div>
+    <div class="kv"><small>Tally Total</small><span id="tally-total">--</span></div>
+    <div class="kv" style="margin-left:auto"><small>Election</small><span id="election-id">--</span></div>
+  </div>
+</div>
+
+<h2>Per-Candidate Tally</h2>
+<div class="card">
+  <table id="tally-table">
+    <thead><tr><th>Candidate ID</th><th>Votes</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<h2>Last 20 Blocks</h2>
+<div class="card">
+  <table class="blocks-table" id="blocks-table">
+    <thead><tr><th>Block</th><th>Tx ID</th><th>Status</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<script>
+const REFRESH_MS = 5000;
+let timer;
+
+async function refresh() {
+  clearTimeout(timer);
+  const electionID = document.getElementById('electionInput').value.trim() || 'election2027';
+  document.getElementById('status').textContent = 'refreshing…';
+
+  try {
+    const res  = await fetch(`/api/audit?electionID=${encodeURIComponent(electionID)}`);
+    const data = await res.json();
+
+    if (data.error) throw new Error(data.error);
+
+    const { invariant, pass, tally, blocks, electionID: eid } = data;
+
+    document.getElementById('election-id').textContent   = eid;
+    document.getElementById('burned').textContent        = invariant.burnedCount;
+    document.getElementById('tally-total').textContent   = invariant.tallyTotal;
+
+    const badge = document.getElementById('invariant-badge');
+    badge.textContent  = pass ? 'PASS' : 'FAIL';
+    badge.className    = 'badge ' + (pass ? 'pass' : 'fail');
+
+    // Tally table
+    const tallyBody = document.querySelector('#tally-table tbody');
+    tallyBody.innerHTML = '';
+    Object.entries(tally).sort(([,a],[,b]) => b - a).forEach(([cid, votes]) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${esc(cid)}</td><td>${votes}</td>`;
+      tallyBody.appendChild(tr);
+    });
+
+    // Blocks table
+    const blocksBody = document.querySelector('#blocks-table tbody');
+    blocksBody.innerHTML = '';
+    const sorted = [...(blocks || [])].sort((a, b) => b.blockNumber - a.blockNumber);
+    sorted.forEach(({ blockNumber, transactions }) => {
+      if (!transactions || transactions.length === 0) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${blockNumber}</td><td colspan="2" style="color:var(--muted)">no transactions</td>`;
+        blocksBody.appendChild(tr);
+        return;
+      }
+      transactions.forEach((tx, i) => {
+        const isValid = tx.validationCode === 'VALID';
+        const tr = document.createElement('tr');
+        tr.className = 'tx-row';
+        tr.innerHTML = `
+          <td>${i === 0 ? blockNumber : ''}</td>
+          <td style="font-family:monospace;font-size:.75rem">${esc(tx.txId.slice(0, 24))}…</td>
+          <td class="${isValid ? 'valid' : 'invalid'}">${esc(tx.validationCode)}</td>`;
+        blocksBody.appendChild(tr);
+      });
+    });
+
+    document.getElementById('status').textContent = 'updated ' + new Date().toLocaleTimeString();
+  } catch (err) {
+    document.getElementById('status').textContent = 'error: ' + err.message;
+    console.error(err);
+  }
+
+  timer = setTimeout(refresh, REFRESH_MS);
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+refresh();
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Administrator console</title>
+<link rel="stylesheet" href="/css/ui.css">
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="role-admin">
+<div class="topbar role-admin">
+  <h1>Administrator console</h1><span class="role">Admin</span>
+  <div class="strip" id="strip" aria-live="polite"><span class="dim" style="color:#cbd5e1">Reading status…</span></div>
+  <span class="right"><label class="keep" style="margin:0;color:#fff;display:flex;gap:6px;align-items:center"><input type="checkbox" id="present"> Presentation mode</label><button type="button" class="btn" data-theme-toggle>Light / dark</button><button type="button" class="btn" id="logout">Sign out</button></span>
+</div>
+<div class="layout">
+  <nav class="sidebar" id="side" aria-label="Sections"></nav>
+  <main id="view"><div class="state"><span class="spinner"></span>Loading…</div></main>
+</div>
+<script src="/js/common.js"></script>
+<script src="/js/batchui.js"></script>
+<script src="/js/admin.js"></script>
+<script src="/js/admin-ops.js"></script>
+<script src="/js/admin-explorer.js"></script>
+<script src="/js/admin-tests.js"></script>
+<script src="/js/records.js"></script>
+<script src="/js/admin-report.js"></script>
+<script src="/js/admin-boot.js"></script>
+</body>
+</html>

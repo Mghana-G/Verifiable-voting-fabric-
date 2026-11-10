@@ -1,0 +1,44 @@
+{
+  "test": "2",
+  "runIndex": 1,
+  "electionID": "test2-run1-1790591501315",
+  "pass": true,
+  "steps": {
+    "votesCast": 1,
+    "peerStopped": true,
+    "rebuildDbsRan": true,
+    "peerRestarted": true
+  },
+  "tallyBeforeHonest": {
+    "C001": 1
+  },
+  "docId": "\u0000TALLY\u0000test2-run1-1790591501315\u0000C001\u0000",
+  "tamperBefore": "1",
+  "tamperPutStatus": 201,
+  "tamperAfter": "9999",
+  "tamperConfirmedInCouchDB": true,
+  "tallyFromMediaPeer": {
+    "C001": 9999
+  },
+  "tallyFromHonestPeer": {
+    "C001": 1
+  },
+  "divergenceConfirmed": true,
+  "endorsementError": "10 ABORTED: failed to collect enough transaction endorsements, see attached details for more info || ProposalResponsePayloads do not match",
+  "endorsementFailedAsExpected": true,
+  "provokeEndorsedUnexpectedly": false,
+  "heightBeforeRecovery": 2999,
+  "heightAfterRecovery": 2999,
+  "recoveryReachedHeight": true,
+  "valueAfterRecovery": "1",
+  "recoveryRestoredCorrectValue": true,
+  "resubmitCommitted": true,
+  "resubmitError": null,
+  "resubmitAttempts": [
+    {
+      "attempt": 1,
+      "committed": true,
+      "error": null
+    }
+  ]
+}

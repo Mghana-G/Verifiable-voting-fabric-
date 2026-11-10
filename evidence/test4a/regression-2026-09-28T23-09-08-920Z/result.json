@@ -1,0 +1,23 @@
+{
+  "test": "4a",
+  "runIndex": 1,
+  "electionID": "test4a-run1-1790636948922",
+  "pass": true,
+  "vatID": "271ff4e589bc3c45a10c40ac66d56fc4f9c975a826e73dbe69046920bd5eb5a6",
+  "originalCommitted": true,
+  "originalTransactionId": "f01325c13d3b502268e8abb168453cf7c1b80367c5a0e6a8bae2c8f9c194542d",
+  "invariantBefore": {
+    "burnedCount": 1,
+    "tallyTotal": 1
+  },
+  "replayStage": "rejected at endorse",
+  "replayError": "10 ABORTED: failed to endorse transaction, see attached details for more info || duplicate transaction found [f01325c13d3b502268e8abb168453cf7c1b80367c5a0e6a8bae2c8f9c194542d].",
+  "rejectedAtEndorser": true,
+  "containsDuplicateTxid": true,
+  "containsNonceUsed": false,
+  "invariantAfter": {
+    "burnedCount": 1,
+    "tallyTotal": 1
+  },
+  "invariantUnchanged": true
+}

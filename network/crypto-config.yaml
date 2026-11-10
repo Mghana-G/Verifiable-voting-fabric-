@@ -1,0 +1,62 @@
+OrdererOrgs:
+  - Name: OrgOrderer
+    Domain: orgorderer.example.com
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: orderer1
+        SANS:
+          - localhost
+          - 127.0.0.1
+      - Hostname: orderer2
+        SANS:
+          - localhost
+          - 127.0.0.1
+      - Hostname: orderer3
+        SANS:
+          - localhost
+          - 127.0.0.1
+
+PeerOrgs:
+  - Name: OrgIEBC
+    Domain: orgiebc.example.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 2
+
+  - Name: OrgJudiciary
+    Domain: orgjudiciary.example.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 2
+
+  - Name: OrgCivilSociety
+    Domain: orgcivilsociety.example.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 2
+
+  - Name: OrgMedia
+    Domain: orgmedia.example.com
+    EnableNodeOUs: true
+    Template:
+      Count: 1
+      SANS:
+        - localhost
+        - 127.0.0.1
+    Users:
+      Count: 2

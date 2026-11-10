@@ -1,0 +1,17 @@
+{
+  "test": "5",
+  "runIndex": 1,
+  "electionID": "test5-run1-1790636957927",
+  "pass": true,
+  "vatID": "398f9167994e57f402843e18dbcb7e36143ae3febc8f45398397e32b6aaf0eb8",
+  "originalPayload": "{\"candidateID\":\"C001\",\"electionID\":\"test5-run1-1790636957927\",\"nonce\":\"5965bb06f03bdb15708ab0bc6183e885\",\"timestamp\":1790636958,\"vatID\":\"398f9167994e57f402843e18dbcb7e36143ae3febc8f45398397e32b6aaf0eb8\"}",
+  "tamperedPayload": "{\"candidateID\":\"C002\",\"electionID\":\"test5-run1-1790636957927\",\"nonce\":\"5965bb06f03bdb15708ab0bc6183e885\",\"timestamp\":1790636958,\"vatID\":\"398f9167994e57f402843e18dbcb7e36143ae3febc8f45398397e32b6aaf0eb8\"}",
+  "castError": "10 ABORTED: failed to endorse transaction, see attached details for more info || chaincode response 500, ERR_BAD_SIGNATURE",
+  "castRejected": true,
+  "containsBadSignature": true,
+  "invariant": {
+    "burnedCount": 0,
+    "tallyTotal": 0
+  },
+  "invariantOK": true
+}

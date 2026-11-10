@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voting network</title>
+<link rel="stylesheet" href="/css/ui.css">
+<style>
+.hero { text-align: center; padding: 30px 12px 8px; }
+.hero h1 { margin: 0 0 6px; font-size: 1.7rem; }
+.tile { display: flex; flex-direction: column; gap: 8px; border-top: 6px solid var(--role); min-height: 270px; }
+.tile h2 { margin: 0; font-size: 1.3rem; }
+.tile .sp { flex: 1; }
+.tile form { display: grid; gap: 6px; }
+.tile .icon { font-size: 2rem; line-height: 1; }
+.fine { font-size: .8rem; color: var(--dim); margin-top: 18px; text-align: center; }
+#samples { font-size: .85rem; }
+</style>
+</head>
+<body>
+<div class="topbar role-admin" style="--role:#334155"><h1>Hyperledger Fabric e-voting prototype</h1><span class="right"><button type="button" class="btn" data-theme-toggle>Light / dark</button></span></div>
+<main>
+  <div class="hero">
+    <h1>Mock Presidential Election 2027</h1>
+    <p class="dim" id="electionLine">BSc thesis prototype. Four organisations, three Raft orderers, one channel.</p>
+  </div>
+  <div class="grid cols-3" id="tiles">
+    <section class="card tile role-admin">
+      <div class="icon" aria-hidden="true">&#9881;</div>
+      <div class="small dim">Step 1: set up the chain</div><h2>Administrator</h2>
+      <p class="dim small">Network control, ledger explorer, tests, evidence and project records.</p>
+      <form id="adminForm">
+        <label for="adminPw">Password</label>
+        <input type="password" id="adminPw" autocomplete="current-password" required>
+        <button type="submit" class="primary" id="adminBtn">Sign in</button>
+        <div id="adminMsg" class="small" role="alert"></div>
+      </form>
+      <div class="sp"></div>
+    </section>
+    <section class="card tile role-voter">
+      <div class="icon" aria-hidden="true">&#9745;</div>
+      <div class="small dim">Step 2: vote</div><h2>Voter</h2>
+      <p class="dim small">Polling station booth. Signing in checks your ID against the off-chain registry and recomputes its hash.</p>
+      <form id="voterForm" autocomplete="off">
+        <label for="voterID">Voter ID</label>
+        <input type="text" id="voterID" name="voterID" placeholder="KE00001915" maxlength="16" spellcheck="false" required>
+        <button type="submit" class="primary">Enter the booth</button>
+        <div id="voterMsg" class="small" role="alert"></div>
+      </form>
+      <div class="sp"></div>
+      <a href="#" id="sampleLink" class="small">Sample voter IDs for a demo</a>
+      <div id="samples" class="small"></div>
+    </section>
+    <section class="card tile role-verify">
+      <div class="icon" aria-hidden="true">&#10003;</div>
+      <div class="small dim">Step 3: verify</div><h2>Public verifier</h2>
+      <p class="dim small">No sign-in. Results, the audit invariant, four-peer agreement, ballot lookup and chain integrity.</p>
+      <div class="sp"></div>
+      <a class="btn primary big" href="/verify" style="text-align:center">Open the verifier</a>
+    </section>
+  </div>
+  <p class="fine">Demo-grade access control for a local prototype, not production authentication. Sessions live in memory, and this page is served on 127.0.0.1 only.</p>
+</main>
+<script src="/js/common.js"></script>
+<script src="/js/landing.js"></script>
+</body>
+</html>

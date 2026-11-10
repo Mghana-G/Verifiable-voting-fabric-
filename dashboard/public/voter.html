@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voter booth</title>
+<link rel="stylesheet" href="/css/ui.css">
+<style>
+.stepper { display: flex; gap: 4px; flex-wrap: wrap; margin: 4px 0 16px; padding: 0; list-style: none; }
+.stepper li { flex: 1 1 110px; font-size: .78rem; padding: 6px 8px; border-radius: 8px; background: var(--soft); color: var(--dim); text-align: center; border-bottom: 3px solid transparent; }
+.stepper li.done { color: var(--ok); border-bottom-color: var(--ok); }
+.stepper li.now { color: var(--ink); font-weight: 700; border-bottom-color: var(--role); background: var(--card); }
+.cands { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin: 12px 0; }
+.cand { text-align: left; border: 2px solid var(--line); border-top-width: 8px; border-radius: 12px; padding: 16px; background: var(--card); cursor: pointer; display: block; width: 100%; }
+.cand[aria-pressed="true"] { border-color: var(--ink); box-shadow: 0 0 0 3px var(--accent); }
+.cand .av { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 1.2rem; color: #fff; margin-bottom: 8px; }
+.cand .nm { font-size: 1.1rem; font-weight: 600; } .cand .pt { color: var(--dim); font-size: .9rem; }
+.cand .tick { float: right; font-size: 1.4rem; }
+.pipe { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin: 14px 0; }
+.stage { border: 2px solid var(--line); border-radius: 10px; padding: 12px; background: var(--card); transition: border-color .3s, background .3s; }
+.stage .t { font-weight: 600; } .stage .d { font-size: .8rem; color: var(--dim); min-height: 2.4em; }
+.stage.active { border-color: var(--accent); animation: pulse 1.1s ease-in-out infinite; }
+.stage.done { border-color: var(--ok); background: var(--ok-bg); } .stage.failed { border-color: var(--bad); background: var(--bad-bg); }
+@keyframes pulse { 50% { box-shadow: 0 0 0 4px rgba(47, 93, 158, .25); } }
+.receipt { border: 2px dashed var(--ok); border-radius: 12px; padding: 16px; background: var(--card); }
+.row-end { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+@media print { .topbar, .stepper, .row-end, details, #batchRoot { display: none !important; } body { background: #fff; } }
+</style>
+</head>
+<body class="role-voter">
+<div class="topbar role-voter">
+  <h1 id="ttl">Voter booth</h1><span class="role">Voter</span><span class="dim small" id="pstation" style="color:#d9efe4"></span>
+  <span class="right"><span class="small" id="timer"></span><button type="button" class="btn" id="batchToggle">Polling-station mode</button><button type="button" class="btn" data-theme-toggle>Light / dark</button><button type="button" class="btn" id="leave">Leave booth</button></span>
+</div>
+<main>
+  <div id="batchRoot" hidden style="margin-bottom:16px"></div>
+  <ol class="stepper" id="stepper"></ol>
+  <section class="card" id="stage"><div class="state"><span class="spinner"></span>Opening the booth…</div></section>
+</main>
+<script src="/js/common.js"></script>
+<script src="/js/batchui.js"></script>
+<script src="/js/voter.js"></script>
+</body>
+</html>

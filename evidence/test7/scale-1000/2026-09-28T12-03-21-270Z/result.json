@@ -1,0 +1,22 @@
+{
+  "test": "7",
+  "scale": 1000,
+  "electionID": "perf-1000-1790597001270",
+  "pass": true,
+  "diskFreeGBBefore": 36,
+  "mintTotalMs": 72388,
+  "castTotalMs": 1150875,
+  "committed": 1000,
+  "failed": 0,
+  "latencyMeanMs": 1149.838,
+  "latencyMedianMs": 704,
+  "latencyP95Ms": 2887,
+  "throughputBallotsPerSec": 0.8689040947105463,
+  "throughputTxPerSec": 1.7378081894210926,
+  "invariant": {
+    "burnedCount": 1000,
+    "tallyTotal": 1000
+  },
+  "invariantOK": true,
+  "diskFreeGBAfter": 36
+}

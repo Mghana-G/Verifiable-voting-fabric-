@@ -1,0 +1,9 @@
+This test7 scale=10000 run was interrupted when the host/VM stopped (all
+Docker containers exited simultaneously with code 255, consistent with a
+Docker daemon restart or host reboot) partway through execution. Only
+couchdb-before.json and a partial dockerstats.csv were written before the
+node process was killed; no result.json or latency.csv exist. Containers
+were restarted cleanly (docker compose start, no rebuild needed — ledger
+data persisted in named volumes) and health-check.sh confirmed all 4 peers
+at matching height (13636) before this run was rerun from scratch. Kept as
+historical evidence, not deleted, per CLAUDE.md rule 9.

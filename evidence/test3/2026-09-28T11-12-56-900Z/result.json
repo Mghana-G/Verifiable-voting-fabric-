@@ -1,0 +1,17 @@
+{
+  "test": "3",
+  "runIndex": 1,
+  "electionID": "test3-run1-1790593976902",
+  "count": 1000,
+  "pass": true,
+  "mintTotalMs": 51942,
+  "castTotalMs": 723933,
+  "totalMs": 775875,
+  "invariant": {
+    "burnedCount": 1000,
+    "tallyTotal": 1000
+  },
+  "committed": 1000,
+  "failed": 0,
+  "invariantOK": true
+}

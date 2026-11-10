@@ -1,0 +1,27 @@
+{
+  "test": "1a",
+  "runIndex": 1,
+  "electionID": "test1a-run1-1790579041626",
+  "pass": true,
+  "vatID": "7d15f19918f2c22b15d3fdbd85ef68d0fac39b2fdb20279d012dd7e8cf79da4d",
+  "firstCastCommitted": true,
+  "firstCastResult": {
+    "ballotID": "9c628c0bae8665bc92361ed153dca7933874f774cabb339f655bfea12ee59d62",
+    "vatID": "7d15f19918f2c22b15d3fdbd85ef68d0fac39b2fdb20279d012dd7e8cf79da4d",
+    "candidateID": "C001",
+    "electionID": "test1a-run1-1790579041626",
+    "timestamp": 1790579044
+  },
+  "secondErrorName": "EndorseError",
+  "secondCastError": "10 ABORTED: failed to endorse transaction, see attached details for more info || chaincode response 500, ERR_VAT_NOT_ACTIVE",
+  "secondCastRejected": true,
+  "errorContainsVatNotActive": true,
+  "heightBeforeReplay": 290,
+  "heightAfterReplay": 290,
+  "noNewBlock": true,
+  "invariant": {
+    "burnedCount": 1,
+    "tallyTotal": 1
+  },
+  "invariantOK": true
+}

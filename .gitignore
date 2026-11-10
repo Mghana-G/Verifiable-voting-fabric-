@@ -1,0 +1,55 @@
+# Generated crypto material
+network/organizations/
+network/channel-artifacts/
+
+# Node dependencies
+node_modules/
+
+# SQLite registry
+voter-generator/registry.db
+
+# Fabric wallets
+wallet/
+**/wallet/
+
+# Environment files with secrets
+.env.local
+network/.env.local
+
+# Log files
+*.log
+
+# Evidence raw logs (keep JSON and screenshots, skip large log dumps)
+evidence/**/*.log
+
+# OS artefacts
+.DS_Store
+Thumbs.db
+
+# Generated chaincode package (rebuilt by every 05-deploy-chaincode.sh run)
+network/voting.tar.gz
+
+# dashboard v2 secrets and output
+dashboard/.env
+dashboard/out/
+
+# Editor swap files
+*.swp
+
+# Local assistant/tooling config and build planning notes (not part of the project)
+.claude/
+CLAUDE.md
+IMPLEMENTATION_BRIEF.md
+MASTER_PLAN.md
+docs/*PROMPT*.md
+docs/PROGRESS.md
+docs/BLOCKERS.md
+docs/DASHBOARD_PLAN.md
+docs/defence-slides/
+docs/chapter4-figures/
+docs/CHAPTERS_5_6_REVISION_NOTES.md
+docs/*.docx
+
+# Raw test evidence (large); only the summary is published
+evidence/*
+!evidence/SUMMARY.md

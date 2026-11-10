@@ -1,0 +1,11 @@
+#!/bin/sh
+# External builder "detect" script for the node-docker builder (DEV-002/DEV-006).
+# Accepts a chaincode package iff its metadata declares type "node" — this
+# project only ever packages Node.js chaincode, and the only other registered
+# builder (ccaas_builder) looks for its own distinct metadata shape, so this
+# is unambiguous. Args per the Fabric external builder protocol:
+#   $1 = chaincode source directory   $2 = metadata directory
+set -e
+METADATA_DIR="$2"
+TYPE=$(grep -oP '"type"\s*:\s*"\K[^"]+' "${METADATA_DIR}/metadata.json" 2>/dev/null || echo "")
+[ "${TYPE}" = "node" ]

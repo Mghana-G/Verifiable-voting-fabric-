@@ -1,0 +1,9 @@
+{
+  "vatID": "45c5fafd13ff5043f7e4b1d30d911267e401fce2a884176e9315f03372f5f274",
+  "candidateID": "C001",
+  "ephemeralPubKey": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEox/etZjDd7tmibhQt6XXILm8QHkN\nazEi9gBhMo7TRADN54UVshnNQt9Bomi2nIGZvBJVCvYwPtzwvzaYSNY8gQ==\n-----END PUBLIC KEY-----\n",
+  "signatureB64": "MEUCIQD9Odpaf1CAuINU5nl5RILgthg86+/DRmDxOHEdawDSjwIgZLK5U6AdmikZeorLAZjvbOINWVy5wfhenOlMoB8eoio=",
+  "payloadStr": "{\"candidateID\":\"C001\",\"electionID\":\"test6-run2-1790591233055745551\",\"nonce\":\"4ef0068da84c644c82ea55bfbbc0c02b\",\"timestamp\":1790591235,\"vatID\":\"45c5fafd13ff5043f7e4b1d30d911267e401fce2a884176e9315f03372f5f274\"}",
+  "nonce": "4ef0068da84c644c82ea55bfbbc0c02b",
+  "timestamp": 1790591235
+}

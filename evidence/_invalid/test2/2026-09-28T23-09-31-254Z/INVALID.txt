@@ -1,0 +1,11 @@
+This test2 regression run (post-DEV-006 rebuild, 500ms BatchTimeout) timed
+out waiting for peer0.orgmedia's rebuild-dbs replay to catch up: chain had
+grown to 25,487 blocks (from the Phase 4C test7 sweep), and replay at that
+size took ~45 minutes, longer than the 15-minute waitForHeight timeout that
+was compiled into the already-running process at the time. Everything up
+through the endorsement-mismatch check (divergence confirmed, endorsement
+correctly rejected — see result.json) matches prior passing runs exactly;
+only the post-recovery wait step timed out. Not a correctness regression.
+waitForHeight's timeout raised to 60 minutes (test/lib/blockchain.js,
+test2-insider-modification.js) for the retry. Kept as historical evidence,
+not deleted, per CLAUDE.md rule 9.

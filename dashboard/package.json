@@ -1,0 +1,15 @@
+{
+  "name": "voting-network-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Project command centre: read-only operations and evidence tracking for the voting network",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.14.6",
+    "@hyperledger/fabric-gateway": "^1.11.0",
+    "express": "^4.21.0"
+  }
+}

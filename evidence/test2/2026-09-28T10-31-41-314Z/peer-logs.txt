@@ -1,0 +1,604 @@
+=== docker logs peer0.orgmedia.example.com --tail 300 ===
+    authcachemaxsize: 1000
+    authcachepurgeretentionratio: 0.75
+    enabled: true
+    orgmembersallowedaccess: false
+  filesystempath: /var/hyperledger/production
+  gateway:
+    broadcasttimeout: 30s
+    dialtimeout: 2m
+    enabled: true
+    endorsementtimeout: 30s
+  gossip:
+    aliveexpirationtimeout: 25s
+    alivetimeinterval: 5s
+    bootstrap: peer0.orgmedia.example.com:7081
+    conntimeout: 2s
+    dialtimeout: 3s
+    digestwaittime: 1s
+    election:
+      leaderalivethreshold: 10s
+      leaderelectionduration: 5s
+      membershipsampleinterval: 1s
+      startupgraceperiod: 15s
+    externalendpoint: peer0.orgmedia.example.com:7081
+    maxblockcounttostore: 10
+    maxconnectionattempts: 120
+    maxpropagationburstlatency: 10ms
+    maxpropagationburstsize: 10
+    membershiptrackerinterval: 5s
+    msgexpirationfactor: 20
+    orgleader: true
+    propagateiterations: 1
+    propagatepeernum: 3
+    publishcertperiod: 10s
+    publishstateinfointerval: 4s
+    pullinterval: 4s
+    pullpeernum: 3
+    pvtdata:
+      btlpullmargin: 10
+      implicitcollectiondisseminationpolicy:
+        maxpeercount: 1
+        requiredpeercount: 0
+      pullretrythreshold: 60s
+      pushacktimeout: 3s
+      reconcilebatchsize: 10
+      reconcilesleepinterval: 1m
+      reconciliationenabled: true
+      skippullinginvalidtransactionsduringcommit: false
+      transientstoremaxblockretention: 1000
+    reconnectinterval: 25s
+    recvbuffsize: 20
+    requeststateinfointerval: 4s
+    requestwaittime: 1500ms
+    responsewaittime: 2s
+    sendbuffsize: 200
+    skipblockverification: false
+    state:
+      batchsize: 10
+      blockbuffersize: 20
+      checkinterval: 10s
+      enabled: false
+      maxretries: 3
+      responsetimeout: 3s
+    useleaderelection: false
+  handlers:
+    authfilters:
+    - name: DefaultAuth
+    - name: ExpirationCheck
+    decorators:
+    - name: DefaultDecorator
+    endorsers:
+      escc:
+        name: DefaultEndorsement
+    validators:
+      vscc:
+        name: DefaultValidation
+  id: peer0.orgmedia.example.com
+  keepalive:
+    client:
+      interval: 60s
+      timeout: 20s
+    deliveryclient:
+      interval: 60s
+      timeout: 20s
+    interval: 7200s
+    mininterval: 60s
+    timeout: 20s
+  limits:
+    concurrency:
+      deliverservice: 2500
+      endorserservice: 2500
+      gatewayservice: 500
+  listenaddress: 0.0.0.0:7081
+  localmspid: OrgMediaMSP
+  localmsptype: bccsp
+  maxrecvmsgsize: 104857600
+  maxsendmsgsize: 104857600
+  mspconfigpath: /etc/hyperledger/fabric/msp
+  networkid: dev
+  profile:
+    enabled: "false"
+    listenaddress: 0.0.0.0:6060
+  tls:
+    cert:
+      file: /etc/hyperledger/fabric/tls/server.crt
+    clientauthrequired: false
+    clientrootcas:
+      files:
+      - tls/ca.crt
+    enabled: "true"
+    key:
+      file: /etc/hyperledger/fabric/tls/server.key
+    rootcert:
+      file: /etc/hyperledger/fabric/tls/ca.crt
+vm:
+  docker:
+    attachstdout: false
+    hostconfig:
+      logconfig:
+        config:
+          max-file: "5"
+          max-size: 50m
+        type: json-file
+      memory: 2147483648
+      networkmode: voting_votingnet
+    tls:
+      ca:
+        file: docker/ca.crt
+      cert:
+        file: docker/tls.crt
+      enabled: false
+      key:
+        file: docker/tls.key
+  endpoint: unix:///host/var/run/docker.sock
+[34m2026-09-28 10:31:55.950 UTC 0003 INFO[0m [peer] [34;1mgetLocalAddress[0m -> Auto-detected peer address: 172.18.0.14:7081
+[34m2026-09-28 10:31:55.950 UTC 0004 INFO[0m [peer] [34;1mgetLocalAddress[0m -> Returning peer0.orgmedia.example.com:7081
+[34m2026-09-28 10:31:55.951 UTC 0005 INFO[0m [nodeCmd] [34;1minitGrpcSemaphores[0m -> concurrency limit for endorser service is 2500
+[34m2026-09-28 10:31:55.951 UTC 0006 INFO[0m [nodeCmd] [34;1minitGrpcSemaphores[0m -> concurrency limit for deliver service is 2500
+[34m2026-09-28 10:31:55.952 UTC 0007 INFO[0m [nodeCmd] [34;1minitGrpcSemaphores[0m -> concurrency limit for gateway service is 500
+[34m2026-09-28 10:31:55.952 UTC 0008 INFO[0m [nodeCmd] [34;1mserve[0m -> Starting peer with TLS enabled
+[34m2026-09-28 10:31:55.987 UTC 0009 INFO[0m [certmonitor] [34;1mtrackCertExpiration[0m -> The enrollment certificate will expire on 2036-09-18 19:50:00 +0000 UTC
+[34m2026-09-28 10:31:55.988 UTC 000a INFO[0m [certmonitor] [34;1mtrackCertExpiration[0m -> The server TLS certificate will expire on 2036-09-18 19:50:00 +0000 UTC
+[34m2026-09-28 10:31:55.988 UTC 000b INFO[0m [ledgermgmt] [34;1mNewLedgerMgr[0m -> Initializing LedgerMgr
+[34m2026-09-28 10:31:56.030 UTC 000c INFO[0m [leveldbhelper] [34;1mopenDBAndCheckFormat[0m -> DB is empty Setting db format as 2.0
+[34m2026-09-28 10:31:56.063 UTC 000d INFO[0m [leveldbhelper] [34;1mopenDBAndCheckFormat[0m -> DB is empty Setting db format as 2.0
+[34m2026-09-28 10:31:56.143 UTC 000e INFO[0m [couchdb] [34;1mcreateDatabaseIfNotExist[0m -> Created state database fabric__internal
+[34m2026-09-28 10:31:56.191 UTC 000f INFO[0m [ledgermgmt] [34;1mNewLedgerMgr[0m -> Initialized LedgerMgr
+[34m2026-09-28 10:31:56.192 UTC 0010 INFO[0m [gossip.service] [34;1mNew[0m -> Initialize gossip with endpoint peer0.orgmedia.example.com:7081
+[34m2026-09-28 10:31:56.196 UTC 0011 INFO[0m [gossip.gossip] [34;1mNew[0m -> Creating gossip service with self membership of Endpoint: peer0.orgmedia.example.com:7081, InternalEndpoint: peer0.orgmedia.example.com:7081, PKI-ID: c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0, Metadata: 
+[34m2026-09-28 10:31:56.197 UTC 0012 INFO[0m [gossip.gossip] [34;1mstart[0m -> Gossip instance peer0.orgmedia.example.com:7081 started
+[34m2026-09-28 10:31:56.199 UTC 0013 INFO[0m [lifecycle] [34;1mInitializeLocalChaincodes[0m -> Initialized lifecycle cache with 1 already installed chaincodes
+[34m2026-09-28 10:31:56.199 UTC 0014 INFO[0m [nodeCmd] [34;1mcomputeChaincodeEndpoint[0m -> Entering computeChaincodeEndpoint with peerHostname: peer0.orgmedia.example.com
+[34m2026-09-28 10:31:56.199 UTC 0015 INFO[0m [nodeCmd] [34;1mcomputeChaincodeEndpoint[0m -> Exit with ccEndpoint: peer0.orgmedia.example.com:7082
+[34m2026-09-28 10:31:56.201 UTC 0016 INFO[0m [sccapi] [34;1mDeploySysCC[0m -> deploying system chaincode 'lscc'
+[34m2026-09-28 10:31:56.202 UTC 0017 INFO[0m [sccapi] [34;1mDeploySysCC[0m -> deploying system chaincode 'cscc'
+[34m2026-09-28 10:31:56.202 UTC 0018 INFO[0m [sccapi] [34;1mDeploySysCC[0m -> deploying system chaincode 'qscc'
+[34m2026-09-28 10:31:56.202 UTC 0019 INFO[0m [sccapi] [34;1mDeploySysCC[0m -> deploying system chaincode '_lifecycle'
+[34m2026-09-28 10:31:56.202 UTC 001a INFO[0m [nodeCmd] [34;1mserve[0m -> Deployed system chaincodes
+[34m2026-09-28 10:31:56.202 UTC 001b INFO[0m [peer] [34;1mInitialize[0m -> Loading chain votingchannel
+[34m2026-09-28 10:31:56.202 UTC 001c INFO[0m [ledgermgmt] [34;1mOpenLedger[0m -> Opening ledger with id = votingchannel
+[34m2026-09-28 10:31:56.204 UTC 001d INFO[0m [blkstorage] [34;1mnewBlockfileMgr[0m -> Getting block information from block storage
+[34m2026-09-28 10:31:56.267 UTC 001e INFO[0m [blkstorage] [34;1msyncIndex[0m -> Start building index from block [0] to last block [2998]
+[34m2026-09-28 10:31:56.269 UTC 001f INFO[0m [blkstorage] [34;1msyncIndex[0m -> Indexed block number [0]
+[34m2026-09-28 10:32:00.719 UTC 0020 INFO[0m [blkstorage] [34;1msyncIndex[0m -> Finished building index. Last block indexed [2998]
+[34m2026-09-28 10:32:00.755 UTC 0021 INFO[0m [couchdb] [34;1mcreateDatabaseIfNotExist[0m -> Created state database votingchannel_
+[34m2026-09-28 10:32:00.843 UTC 0022 INFO[0m [couchdb] [34;1mcreateDatabaseIfNotExist[0m -> Created state database votingchannel__lifecycle
+[34m2026-09-28 10:32:00.867 UTC 0023 INFO[0m [kvledger] [34;1mrecommitLostBlocks[0m -> Recommitting lost blocks - firstBlockNum=0, lastBlockNum=2998, recoverables=[]kvledger.recoverable{(*txmgr.LockBasedTxMgr)(0xc0003c7200), (*history.DB)(0xc004398c30)}
+[34m2026-09-28 10:32:00.868 UTC 0024 INFO[0m [lockbasedtxmgr] [34;1mCommitLostBlock[0m -> Recommitting block [0] to state database
+[34m2026-09-28 10:32:00.934 UTC 0025 INFO[0m [history] [34;1mCommitLostBlock[0m -> Recommitting block [0] to history database
+[34m2026-09-28 10:32:00.991 UTC 0026 INFO[0m [couchdb] [34;1mcreateDatabaseIfNotExist[0m -> Created state database votingchannel_lscc
+[34m2026-09-28 10:32:01.072 UTC 0027 INFO[0m [couchdb] [34;1mcreateDatabaseIfNotExist[0m -> Created state database votingchannel__lifecycle$$h_implicit_org_$org$i$e$b$c$m$s$p
+[33m2026-09-28 10:32:01.110 UTC 0028 WARN[0m [lifecycle] [33;1mhandleMetadataUpdatesForChannel[0m -> no metadata found on channel 'votingchannel': could not get channel config for channel 'votingchannel'
+[34m2026-09-28 10:32:01.200 UTC 0029 INFO[0m [couchdb] [34;1mcreateDatabaseIfNotExist[0m -> Created state database votingchannel__lifecycle$$h_implicit_org_$org$judiciary$m$s$p
+[33m2026-09-28 10:32:01.224 UTC 002a WARN[0m [lifecycle] [33;1mhandleMetadataUpdatesForChannel[0m -> no metadata found on channel 'votingchannel': could not get channel config for channel 'votingchannel'
+[34m2026-09-28 10:32:01.327 UTC 002b INFO[0m [couchdb] [34;1mcreateDatabaseIfNotExist[0m -> Created state database votingchannel__lifecycle$$h_implicit_org_$org$civil$society$m$s$p
+[33m2026-09-28 10:32:01.351 UTC 002c WARN[0m [lifecycle] [33;1mhandleMetadataUpdatesForChannel[0m -> no metadata found on channel 'votingchannel': could not get channel config for channel 'votingchannel'
+[34m2026-09-28 10:32:01.452 UTC 002d INFO[0m [couchdb] [34;1mcreateDatabaseIfNotExist[0m -> Created state database votingchannel__lifecycle$$h_implicit_org_$org$media$m$s$p
+[33m2026-09-28 10:32:01.478 UTC 002e WARN[0m [lifecycle] [33;1mhandleMetadataUpdatesForChannel[0m -> no metadata found on channel 'votingchannel': could not get channel config for channel 'votingchannel'
+[34m2026-09-28 10:32:01.548 UTC 002f INFO[0m [couchdb] [34;1mcreateDatabaseIfNotExist[0m -> Created state database votingchannel__lifecycle$$p_implicit_org_$org$media$m$s$p
+[34m2026-09-28 10:32:01.635 UTC 0030 INFO[0m [lifecycle] [34;1mupdate[0m -> Updating cached definition for chaincode 'voting' on channel 'votingchannel'
+[34m2026-09-28 10:32:01.678 UTC 0031 INFO[0m [lifecycle] [34;1mupdate[0m -> Chaincode with package ID 'voting_1.0:75c68845fff4a108590ded48add37788501bf52e01160fdff896fc98bc024ae4' now available on channel votingchannel for chaincode definition voting:1.0
+[33m2026-09-28 10:32:01.689 UTC 0032 WARN[0m [lifecycle] [33;1mhandleMetadataUpdatesForChannel[0m -> no metadata found on channel 'votingchannel': could not get channel config for channel 'votingchannel'
+[34m2026-09-28 10:32:01.690 UTC 0033 INFO[0m [cceventmgmt] [34;1mHandleStateUpdates[0m -> Channel [votingchannel]: Handling deploy or update of chaincode [voting]
+[34m2026-09-28 10:32:01.798 UTC 0034 INFO[0m [couchdb] [34;1mcreateDatabaseIfNotExist[0m -> Created state database votingchannel_voting
+[34m2026-09-28 10:32:02.132 UTC 0035 INFO[0m [couchdb] [34;1mcreateDatabaseIfNotExist[0m -> Created state database votingchannel_voting$$hvoter$issued$collection
+[33m2026-09-28 10:32:09.042 UTC 0036 WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [122] Transaction index [1] TxId [f6f0d4bd1bd91c39eb7d52976e650083484d581fcd0dc91f24d53c9c06110f56] marked as invalid by committer. Reason code [MVCC_READ_CONFLICT]
+[33m2026-09-28 10:32:09.145 UTC 0037 WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [124] Transaction index [1] TxId [a72041e090cd102c2bca7abb0de5b79488b190fbef8cb4b5136fd66d41343a3f] marked as invalid by committer. Reason code [MVCC_READ_CONFLICT]
+[33m2026-09-28 10:32:10.099 UTC 0038 WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [143] Transaction index [0] TxId [ccef6f0b26e7d5fcbc61d727de9223a8876749ee22474862df424683930ee3a0] marked as invalid by committer. Reason code [ENDORSEMENT_POLICY_FAILURE]
+[33m2026-09-28 10:32:10.163 UTC 0039 WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [145] Transaction index [0] TxId [b7e0f6904c5f66bc5335c4545e506f5c528376f7f729ffa1a6c1c52da14cceb5] marked as invalid by committer. Reason code [ENDORSEMENT_POLICY_FAILURE]
+[33m2026-09-28 10:32:12.617 UTC 003a WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [190] Transaction index [1] TxId [c58923adbb60f385098c19b37d21aae0c7f12058508eacf2ccafbdd3b8e438da] marked as invalid by committer. Reason code [MVCC_READ_CONFLICT]
+[33m2026-09-28 10:32:12.721 UTC 003b WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [192] Transaction index [1] TxId [f01e29029361e5c8ca901643e487ad9a18e76289e1a7cd122bd533fa3c0fc317] marked as invalid by committer. Reason code [MVCC_READ_CONFLICT]
+[33m2026-09-28 10:32:12.824 UTC 003c WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [194] Transaction index [1] TxId [f05dceb01746d8ecf662b10d9b84ef75b8d20de78f7224e4f09f76825449dabc] marked as invalid by committer. Reason code [MVCC_READ_CONFLICT]
+[33m2026-09-28 10:32:15.428 UTC 003d WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [241] Transaction index [0] TxId [b18bc32bbbdc5a45c790a6247b38a3b46c1ebb2c6943cafb7b596c908ff790cb] marked as invalid by committer. Reason code [ENDORSEMENT_POLICY_FAILURE]
+[33m2026-09-28 10:32:15.517 UTC 003e WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [243] Transaction index [0] TxId [d9f130c4efc0fc333a65a9616ea5a581f0631b927b9dc2ce17d047eb4b240296] marked as invalid by committer. Reason code [ENDORSEMENT_POLICY_FAILURE]
+[33m2026-09-28 10:32:15.584 UTC 003f WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [245] Transaction index [0] TxId [fc4095e79d6d6aa1ebfb8616b9051324c1c43f9c7372164711cc36412e82cb5c] marked as invalid by committer. Reason code [ENDORSEMENT_POLICY_FAILURE]
+[33m2026-09-28 10:32:18.339 UTC 0040 WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [295] Transaction index [1] TxId [2dd7471d5a47a88e49d5df8a59e1c6cb3fbfeac35ded60c67a512ba6c5b12f6f] marked as invalid by committer. Reason code [MVCC_READ_CONFLICT]
+[33m2026-09-28 10:32:18.448 UTC 0041 WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [297] Transaction index [1] TxId [8e1bef70a50f80a35a9df7593cece66b8c141dcc70dbff024b4b7b48a805409e] marked as invalid by committer. Reason code [MVCC_READ_CONFLICT]
+[33m2026-09-28 10:32:18.564 UTC 0042 WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [299] Transaction index [1] TxId [96ad9c451b964d412ce17888ca0671fc7f9059cc3892ee6b88157a6c06bc82e5] marked as invalid by committer. Reason code [MVCC_READ_CONFLICT]
+[34m2026-09-28 10:33:05.180 UTC 0043 INFO[0m [lockbasedtxmgr] [34;1mCommitLostBlock[0m -> Recommitting block [1000] to state database
+[34m2026-09-28 10:33:05.222 UTC 0044 INFO[0m [history] [34;1mCommitLostBlock[0m -> Recommitting block [1000] to history database
+[34m2026-09-28 10:34:21.078 UTC 0045 INFO[0m [lockbasedtxmgr] [34;1mCommitLostBlock[0m -> Recommitting block [2000] to state database
+[34m2026-09-28 10:34:21.130 UTC 0046 INFO[0m [history] [34;1mCommitLostBlock[0m -> Recommitting block [2000] to history database
+[33m2026-09-28 10:35:37.749 UTC 0047 WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [2986] Transaction index [0] TxId [b6410b347c3e072dd584185b52615bc20d753d350758af4e691a7fb900ec60f7] marked as invalid by committer. Reason code [ENDORSEMENT_POLICY_FAILURE]
+[33m2026-09-28 10:35:37.827 UTC 0048 WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [2988] Transaction index [0] TxId [63c9ddf6cb06f199c8c7298ba2de18c1d33e6e5fd1c5531820904eb11f6bcccb] marked as invalid by committer. Reason code [ENDORSEMENT_POLICY_FAILURE]
+[33m2026-09-28 10:35:37.896 UTC 0049 WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [2990] Transaction index [0] TxId [4a077e27909fb3ded54402d482dc15cad26cf53564a6b151cab74d38069b6fac] marked as invalid by committer. Reason code [ENDORSEMENT_POLICY_FAILURE]
+[34m2026-09-28 10:35:38.417 UTC 004a INFO[0m [kvledger] [34;1mrecommitLostBlocks[0m -> Recommitted lost blocks - firstBlockNum=0, lastBlockNum=2998, recoverables=[]kvledger.recoverable{(*txmgr.LockBasedTxMgr)(0xc0003c7200), (*history.DB)(0xc004398c30)}
+[34m2026-09-28 10:35:38.419 UTC 004b INFO[0m [ledgermgmt] [34;1mOpenLedger[0m -> Opened ledger with id = votingchannel
+[34m2026-09-28 10:35:38.432 UTC 004c INFO[0m [gossip.gossip] [34;1mJoinChan[0m -> Joining gossip network of channel votingchannel with 4 organizations
+[34m2026-09-28 10:35:38.432 UTC 004d INFO[0m [gossip.gossip] [34;1mlearnAnchorPeers[0m -> Learning about the configured anchor peers of OrgJudiciaryMSP for channel votingchannel: [{peer0.orgjudiciary.example.com 7061}]
+[34m2026-09-28 10:35:38.432 UTC 004e INFO[0m [gossip.gossip] [34;1mlearnAnchorPeers[0m -> Learning about the configured anchor peers of OrgCivilSocietyMSP for channel votingchannel: [{peer0.orgcivilsociety.example.com 7071}]
+[34m2026-09-28 10:35:38.433 UTC 004f INFO[0m [gossip.gossip] [34;1mlearnAnchorPeers[0m -> Learning about the configured anchor peers of OrgMediaMSP for channel votingchannel: [{peer0.orgmedia.example.com 7081}]
+[34m2026-09-28 10:35:38.433 UTC 0050 INFO[0m [gossip.gossip] [34;1mlearnAnchorPeers[0m -> Anchor peer for channel votingchannel with same endpoint, skipping connecting to myself
+[34m2026-09-28 10:35:38.433 UTC 0051 INFO[0m [gossip.gossip] [34;1mlearnAnchorPeers[0m -> Learning about the configured anchor peers of OrgIEBCMSP for channel votingchannel: [{peer0.orgiebc.example.com 7051}]
+[34m2026-09-28 10:35:38.434 UTC 0052 INFO[0m [gossip.state] [34;1mNewGossipStateProvider[0m -> Updating metadata information for channel votingchannel, current ledger sequence is at = 2998, next expected block is = 2999
+[34m2026-09-28 10:35:38.434 UTC 0053 INFO[0m [deliveryClient] [34;1mStartDeliverForChannel[0m -> This peer will retrieve blocks from ordering service and disseminate to other peers in the organization channel=votingchannel
+[34m2026-09-28 10:35:38.434 UTC 0054 INFO[0m [discovery] [34;1mNewService[0m -> Created with config TLS: true, authCacheMaxSize: 1000, authCachePurgeRatio: 0.750000
+[34m2026-09-28 10:35:38.434 UTC 0055 INFO[0m [nodeCmd] [34;1mserve[0m -> Discovery service activated
+[34m2026-09-28 10:35:38.434 UTC 0056 INFO[0m [nodeCmd] [34;1mserve[0m -> Starting peer with Gateway enabled
+[34m2026-09-28 10:35:38.434 UTC 0057 INFO[0m [nodeCmd] [34;1mserve[0m -> Starting peer with ID=[peer0.orgmedia.example.com], network ID=[dev], address=[peer0.orgmedia.example.com:7081]
+[34m2026-09-28 10:35:38.435 UTC 0058 INFO[0m [nodeCmd] [34;1mserve[0m -> Started peer with ID=[peer0.orgmedia.example.com], network ID=[dev], address=[peer0.orgmedia.example.com:7081]
+[34m2026-09-28 10:35:38.435 UTC 0059 INFO[0m [kvledger] [34;1mLoadPreResetHeight[0m -> Loading prereset height from path [/var/hyperledger/production/ledgersData/chains]
+[31m2026-09-28 10:35:38.437 UTC 005a ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 827.383µs with error EOF server=PeerServer remoteaddress=172.18.0.15:45986
+[31m2026-09-28 10:35:38.437 UTC 005b ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 517.161µs with error EOF server=PeerServer remoteaddress=172.18.0.15:45942
+[31m2026-09-28 10:35:38.438 UTC 005c ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 523.873µs with error EOF server=PeerServer remoteaddress=172.18.0.15:37092
+[31m2026-09-28 10:35:38.438 UTC 005d ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 341.861µs with error EOF server=PeerServer remoteaddress=172.18.0.19:43678
+[31m2026-09-28 10:35:38.438 UTC 005e ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 719.682µs with error EOF server=PeerServer remoteaddress=172.18.0.19:53676
+[31m2026-09-28 10:35:38.439 UTC 005f ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 421.652µs with error EOF server=PeerServer remoteaddress=172.18.0.1:46076
+[31m2026-09-28 10:35:38.439 UTC 0060 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 632.187µs with error write tcp 172.18.0.14:7081->172.18.0.19:53680: write: broken pipe server=PeerServer remoteaddress=172.18.0.19:53680
+[31m2026-09-28 10:35:38.440 UTC 0061 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 516.771µs with error EOF server=PeerServer remoteaddress=172.18.0.19:58898
+[31m2026-09-28 10:35:38.440 UTC 0062 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 2.041382ms with error EOF server=PeerServer remoteaddress=172.18.0.15:46578
+[31m2026-09-28 10:35:38.440 UTC 0063 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 457.939µs with error EOF server=PeerServer remoteaddress=172.18.0.1:55000
+[31m2026-09-28 10:35:38.439 UTC 0064 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 444.895µs with error EOF server=PeerServer remoteaddress=172.18.0.1:47144
+[31m2026-09-28 10:35:38.440 UTC 0065 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 2.972281ms with error write tcp 172.18.0.14:7081->172.18.0.15:42448: write: broken pipe server=PeerServer remoteaddress=172.18.0.15:42448
+[31m2026-09-28 10:35:38.440 UTC 0066 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 1.176408ms with error write tcp 172.18.0.14:7081->172.18.0.16:37138: write: broken pipe server=PeerServer remoteaddress=172.18.0.16:37138
+[31m2026-09-28 10:35:38.441 UTC 0067 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 537.199µs with error EOF server=PeerServer remoteaddress=172.18.0.1:47150
+[31m2026-09-28 10:35:38.442 UTC 0068 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 964.225µs with error write tcp 172.18.0.14:7081->172.18.0.16:34398: write: broken pipe server=PeerServer remoteaddress=172.18.0.16:34398
+[31m2026-09-28 10:35:38.442 UTC 006a ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 1.515796ms with error write tcp 172.18.0.14:7081->172.18.0.16:34414: write: broken pipe server=PeerServer remoteaddress=172.18.0.16:34414
+[31m2026-09-28 10:35:38.442 UTC 006b ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 1.24753ms with error EOF server=PeerServer remoteaddress=172.18.0.1:56328
+[31m2026-09-28 10:35:38.442 UTC 006c ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 366.819µs with error write tcp 172.18.0.14:7081->172.18.0.15:45970: write: broken pipe server=PeerServer remoteaddress=172.18.0.15:45970
+[31m2026-09-28 10:35:38.443 UTC 006d ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 2.483332ms with error write tcp 172.18.0.14:7081->172.18.0.19:45228: write: broken pipe server=PeerServer remoteaddress=172.18.0.19:45228
+[31m2026-09-28 10:35:38.443 UTC 006e ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 784.573µs with error EOF server=PeerServer remoteaddress=172.18.0.1:40230
+[31m2026-09-28 10:35:38.443 UTC 006f ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 1.517949ms with error write tcp 172.18.0.14:7081->172.18.0.15:45996: write: broken pipe server=PeerServer remoteaddress=172.18.0.15:45996
+[31m2026-09-28 10:35:38.444 UTC 0070 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 863.631µs with error write tcp 172.18.0.14:7081->172.18.0.15:36544: write: broken pipe server=PeerServer remoteaddress=172.18.0.15:36544
+[31m2026-09-28 10:35:38.444 UTC 0071 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 924.165µs with error EOF server=PeerServer remoteaddress=172.18.0.16:32832
+[31m2026-09-28 10:35:38.444 UTC 0072 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 1.378799ms with error write tcp 172.18.0.14:7081->172.18.0.19:47188: write: broken pipe server=PeerServer remoteaddress=172.18.0.19:47188
+[31m2026-09-28 10:35:38.444 UTC 0073 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 1.501842ms with error EOF server=PeerServer remoteaddress=172.18.0.1:37044
+[31m2026-09-28 10:35:38.444 UTC 0074 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 1.807643ms with error EOF server=PeerServer remoteaddress=172.18.0.1:44400
+[31m2026-09-28 10:35:38.445 UTC 0075 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 729.649µs with error write tcp 172.18.0.14:7081->172.18.0.19:41348: write: broken pipe server=PeerServer remoteaddress=172.18.0.19:41348
+[31m2026-09-28 10:35:38.445 UTC 0076 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 1.601116ms with error EOF server=PeerServer remoteaddress=172.18.0.1:52204
+[31m2026-09-28 10:35:38.446 UTC 0078 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 583.505µs with error EOF server=PeerServer remoteaddress=172.18.0.1:45592
+[31m2026-09-28 10:35:38.446 UTC 0079 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 1.91777ms with error write tcp 172.18.0.14:7081->172.18.0.16:34402: write: broken pipe server=PeerServer remoteaddress=172.18.0.16:34402
+[31m2026-09-28 10:35:38.446 UTC 007a ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 1.531545ms with error EOF server=PeerServer remoteaddress=172.18.0.1:47128
+[31m2026-09-28 10:35:38.446 UTC 007b ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 489.88µs with error EOF server=PeerServer remoteaddress=172.18.0.1:58846
+[31m2026-09-28 10:35:38.446 UTC 007c ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 363.703µs with error EOF server=PeerServer remoteaddress=172.18.0.1:59180
+[31m2026-09-28 10:35:38.446 UTC 0077 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 982.375µs with error EOF server=PeerServer remoteaddress=172.18.0.1:33096
+[31m2026-09-28 10:35:38.442 UTC 0069 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 813.427µs with error write tcp 172.18.0.14:7081->172.18.0.16:36334: write: broken pipe server=PeerServer remoteaddress=172.18.0.16:36334
+[31m2026-09-28 10:35:38.447 UTC 007e ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 420.149µs with error write tcp 172.18.0.14:7081->172.18.0.16:56140: write: broken pipe server=PeerServer remoteaddress=172.18.0.16:56140
+[31m2026-09-28 10:35:38.447 UTC 007d ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 711.455µs with error EOF server=PeerServer remoteaddress=172.18.0.1:44390
+[31m2026-09-28 10:35:38.447 UTC 007f ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 539.833µs with error EOF server=PeerServer remoteaddress=172.18.0.15:34896
+[31m2026-09-28 10:35:38.448 UTC 0080 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 632.117µs with error write tcp 172.18.0.14:7081->172.18.0.16:59164: write: broken pipe server=PeerServer remoteaddress=172.18.0.16:59164
+[31m2026-09-28 10:35:38.448 UTC 0081 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 461.156µs with error write tcp 172.18.0.14:7081->172.18.0.15:45954: write: broken pipe server=PeerServer remoteaddress=172.18.0.15:45954
+[31m2026-09-28 10:35:38.448 UTC 0082 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 357.2µs with error EOF server=PeerServer remoteaddress=172.18.0.19:60710
+[31m2026-09-28 10:35:38.448 UTC 0083 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 565.161µs with error EOF server=PeerServer remoteaddress=172.18.0.1:51316
+[31m2026-09-28 10:35:38.448 UTC 0084 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 317.145µs with error write tcp 172.18.0.14:7081->172.18.0.19:56518: write: broken pipe server=PeerServer remoteaddress=172.18.0.19:56518
+[34m2026-09-28 10:35:38.448 UTC 0085 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2026-09-28T10:35:40.448Z grpc.peer_address=172.18.0.19:49140 grpc.peer_subject="CN=peer0.orgcivilsociety.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=43.302µs
+[31m2026-09-28 10:35:38.448 UTC 0086 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 524.68µs with error EOF server=PeerServer remoteaddress=172.18.0.1:45608
+[31m2026-09-28 10:35:38.448 UTC 0087 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 3.050647ms with error EOF server=PeerServer remoteaddress=172.18.0.1:52212
+[31m2026-09-28 10:35:38.449 UTC 0088 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 663.275µs with error EOF server=PeerServer remoteaddress=172.18.0.1:40824
+[31m2026-09-28 10:35:38.449 UTC 0089 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 469.19µs with error EOF server=PeerServer remoteaddress=172.18.0.1:55876
+[31m2026-09-28 10:35:38.449 UTC 008a ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 465.474µs with error EOF server=PeerServer remoteaddress=172.18.0.1:39696
+[31m2026-09-28 10:35:38.449 UTC 008b ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 791.864µs with error EOF server=PeerServer remoteaddress=172.18.0.1:40422
+[31m2026-09-28 10:35:38.450 UTC 008c ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 471.956µs with error EOF server=PeerServer remoteaddress=172.18.0.1:52778
+[34m2026-09-28 10:35:38.451 UTC 008d INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2026-09-28T10:35:40.451Z grpc.peer_address=172.18.0.15:51664 grpc.peer_subject="CN=peer0.orgjudiciary.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=30.538µs
+[31m2026-09-28 10:35:38.451 UTC 008e ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 1.184865ms with error EOF server=PeerServer remoteaddress=172.18.0.1:40032
+[31m2026-09-28 10:35:38.451 UTC 008f ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 1.252502ms with error EOF server=PeerServer remoteaddress=172.18.0.16:50836
+[31m2026-09-28 10:35:38.452 UTC 0090 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 563.989µs with error write tcp 172.18.0.14:7081->172.18.0.16:50972: write: broken pipe server=PeerServer remoteaddress=172.18.0.16:50972
+[31m2026-09-28 10:35:38.452 UTC 0091 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 3.51054ms with error write tcp 172.18.0.14:7081->172.18.0.16:33000: write: broken pipe server=PeerServer remoteaddress=172.18.0.16:33000
+[31m2026-09-28 10:35:38.452 UTC 0092 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 403.507µs with error write tcp 172.18.0.14:7081->172.18.0.15:58782: write: broken pipe server=PeerServer remoteaddress=172.18.0.15:58782
+[31m2026-09-28 10:35:38.452 UTC 0093 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 329.609µs with error write tcp 172.18.0.14:7081->172.18.0.19:59908: write: broken pipe server=PeerServer remoteaddress=172.18.0.19:59908
+[31m2026-09-28 10:35:38.452 UTC 0094 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 380.143µs with error EOF server=PeerServer remoteaddress=172.18.0.1:38302
+[31m2026-09-28 10:35:38.452 UTC 0095 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 358.654µs with error EOF server=PeerServer remoteaddress=172.18.0.1:59120
+[31m2026-09-28 10:35:38.453 UTC 0096 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 961.495µs with error EOF server=PeerServer remoteaddress=172.18.0.1:59118
+[31m2026-09-28 10:35:38.453 UTC 0097 ERRO[0m [core.comm] [31;1mServerHandshake[0m -> Server TLS handshake failed in 434.416µs with error EOF server=PeerServer remoteaddress=172.18.0.16:44278
+[34m2026-09-28 10:35:38.458 UTC 0098 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2026-09-28T10:35:40.457Z grpc.peer_address=172.18.0.19:53124 grpc.peer_subject="CN=peer0.orgcivilsociety.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=29.856µs
+[34m2026-09-28 10:35:38.459 UTC 0099 INFO[0m [peer.blocksprovider] [34;1mDeliverBlocks[0m -> Pulling next blocks from ordering service channel=votingchannel orderer-address=orderer2.orgorderer.example.com:8050 nextBlock=2999
+[34m2026-09-28 10:35:38.462 UTC 009a INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2026-09-28T10:35:40.462Z grpc.peer_address=172.18.0.15:49084 grpc.peer_subject="CN=peer0.orgjudiciary.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=36.168µs
+[34m2026-09-28 10:35:38.463 UTC 009b INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=gossip.Gossip grpc.method=GossipStream grpc.peer_address=172.18.0.19:53124 grpc.peer_subject="CN=peer0.orgcivilsociety.example.com,L=San Francisco,ST=California,C=US" error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=2.742709ms
+[34m2026-09-28 10:35:38.470 UTC 009c INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2026-09-28T10:35:40.469Z grpc.peer_address=172.18.0.19:53136 grpc.peer_subject="CN=peer0.orgcivilsociety.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=38.843µs
+[34m2026-09-28 10:35:38.471 UTC 009d INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=gossip.Gossip grpc.method=GossipStream grpc.peer_address=172.18.0.15:49084 grpc.peer_subject="CN=peer0.orgjudiciary.example.com,L=San Francisco,ST=California,C=US" error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=8.405681ms
+[34m2026-09-28 10:35:38.473 UTC 009e INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=gossip.Gossip grpc.method=GossipStream grpc.peer_address=172.18.0.19:53136 grpc.peer_subject="CN=peer0.orgcivilsociety.example.com,L=San Francisco,ST=California,C=US" error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=2.01379ms
+[34m2026-09-28 10:35:41.297 UTC 009f INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: qscc duration: 1ms channel= txID=8b00af15
+[34m2026-09-28 10:35:41.297 UTC 00a0 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.18.0.1:52010 grpc.code=OK grpc.call_duration=2.44962ms
+[34m2026-09-28 10:35:43.404 UTC 00a1 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2999] from buffer channel=votingchannel
+[34m2026-09-28 10:35:43.412 UTC 00a2 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2999] in 7ms
+[34m2026-09-28 10:35:43.432 UTC 00a3 INFO[0m [gossip.channel] [34;1mreportMembershipChanges[0m -> [[votingchannel] Membership view has changed. peers went online:  [[peer0.orgcivilsociety.example.com:7071 ] [peer0.orgiebc.example.com:7051 ] [peer0.orgjudiciary.example.com:7061 ]] , current view:  [[peer0.orgcivilsociety.example.com:7071 ] [peer0.orgiebc.example.com:7051 ] [peer0.orgjudiciary.example.com:7061 ]]]
+[34m2026-09-28 10:35:43.525 UTC 00a4 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2999] with 1 transaction(s) in 111ms (state_validation=11ms block_and_pvtdata_commit=8ms state_commit=88ms) commitHash=[ef7a5dbbd04946f16bbb55c8e474cf8f20e4c090bc32495c59132b64250086b7]
+[34m2026-09-28 10:35:43.682 UTC 00a5 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 126ms channel=votingchannel txID=8725cf44
+[34m2026-09-28 10:35:43.683 UTC 00a6 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.request_deadline=2026-09-28T10:36:13.548Z grpc.peer_address=172.18.0.16:33538 grpc.peer_subject="CN=peer0.orgiebc.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=127.901703ms
+[34m2026-09-28 10:35:45.704 UTC 00a7 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [3000] from buffer channel=votingchannel
+[34m2026-09-28 10:35:45.706 UTC 00a8 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [3000] in 2ms
+[34m2026-09-28 10:35:45.825 UTC 00a9 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [3000] with 1 transaction(s) in 117ms (state_validation=10ms block_and_pvtdata_commit=6ms state_commit=99ms) commitHash=[e4d15fbd2ef75dc07c9e72f674f996d885808af742b3253b3cc9cc0ff3e39217]
+
+
+=== docker logs peer0.orgiebc.example.com --tail 300 ===
+[34m2026-09-28 10:26:47.463 UTC 6380 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2978] from buffer channel=votingchannel
+[34m2026-09-28 10:26:47.465 UTC 6381 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2978] in 1ms
+[34m2026-09-28 10:26:47.465 UTC 6382 INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2978] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:26:47.571 UTC 6383 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2978] with 1 transaction(s) in 106ms (state_validation=4ms block_and_pvtdata_commit=7ms state_commit=91ms) commitHash=[47b4727543af044a47b978afbc222213251fe33616631d092eb2412d7c1d2b26]
+[34m2026-09-28 10:26:47.572 UTC 6384 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:28:45.457Z grpc.peer_address=172.18.0.1:54554 grpc.code=OK grpc.call_duration=2.113911457s
+[34m2026-09-28 10:26:47.637 UTC 6385 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 47ms channel=votingchannel txID=a2a01980
+[34m2026-09-28 10:26:47.686 UTC 6386 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:17.588Z grpc.peer_address=172.18.0.1:54554 grpc.code=OK grpc.call_duration=98.2767ms
+[34m2026-09-28 10:26:47.697 UTC 6387 INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=a2a01980af1c28af8c22a4d048eaba8e9b55c154fc776801feed65c2e7bb2cff endpoint=orderer3.orgorderer.example.com:9050
+[34m2026-09-28 10:26:47.700 UTC 6388 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:26:57.696Z grpc.peer_address=172.18.0.1:54554 grpc.code=OK grpc.call_duration=2.624391ms
+[34m2026-09-28 10:26:49.718 UTC 6389 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2979] from buffer channel=votingchannel
+[34m2026-09-28 10:26:49.721 UTC 638a INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2979] in 2ms
+[34m2026-09-28 10:26:49.871 UTC 638b INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2979] with 1 transaction(s) in 149ms (state_validation=10ms block_and_pvtdata_commit=6ms state_commit=130ms) commitHash=[af9b6bc488294d077b44096594e3163c8542e1d609ed254cd85a65a3418e58f3]
+[34m2026-09-28 10:26:49.871 UTC 638c INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:28:47.704Z grpc.peer_address=172.18.0.1:54554 grpc.code=OK grpc.call_duration=2.166057579s
+[34m2026-09-28 10:26:49.928 UTC 638d INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 38ms channel=votingchannel txID=5754496b
+[34m2026-09-28 10:26:49.928 UTC 638e INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:26:59.886Z grpc.peer_address=172.18.0.1:54554 grpc.code=OK grpc.call_duration=39.822307ms
+[34m2026-09-28 10:26:49.957 UTC 638f INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 19ms channel=votingchannel txID=38602b1f
+[33m2026-09-28 10:26:49.958 UTC 6390 WARN[0m [gateway] [33;1mfunc1[0m -> Endorse call to endorser failed channel=votingchannel chaincode=voting txID=38602b1f68ee54dab1bbcf373ff355e37fbbaa51216346b533e0014f58dd5dfe endorserAddress=peer0.orgiebc.example.com:7051 endorserMspid=OrgIEBCMSP error="chaincode response 500, ERR_NONCE_USED"
+[34m2026-09-28 10:26:49.958 UTC 6391 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:19.935Z grpc.peer_address=172.18.0.1:54554 error="rpc error: code = Aborted desc = failed to endorse transaction, see attached details for more info" grpc.code=Aborted grpc.call_duration=21.133832ms
+[34m2026-09-28 10:26:49.995 UTC 6392 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 17ms channel=votingchannel txID=2e29fd15
+[34m2026-09-28 10:26:49.995 UTC 6393 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:26:59.975Z grpc.peer_address=172.18.0.1:54554 grpc.code=OK grpc.call_duration=19.203987ms
+[34m2026-09-28 10:26:50.589 UTC 6394 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 17ms channel=votingchannel txID=4cd0f69f
+[34m2026-09-28 10:26:50.603 UTC 6395 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:20.538Z grpc.peer_address=172.18.0.1:58558 grpc.code=OK grpc.call_duration=33.235176ms
+[34m2026-09-28 10:26:50.620 UTC 6396 INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=4cd0f69f219e7a046fde570dc2c0eb4f99490f6bda0b765f107e7c43f41c7afd endpoint=orderer3.orgorderer.example.com:9050
+[34m2026-09-28 10:26:50.621 UTC 6397 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:27:00.618Z grpc.peer_address=172.18.0.1:58558 grpc.code=OK grpc.call_duration=1.715746ms
+[34m2026-09-28 10:26:52.634 UTC 6398 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2980] from buffer channel=votingchannel
+[34m2026-09-28 10:26:52.640 UTC 6399 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2980] in 5ms
+[34m2026-09-28 10:26:52.641 UTC 639a INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2980] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:26:52.751 UTC 639b INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2980] with 1 transaction(s) in 108ms (state_validation=12ms block_and_pvtdata_commit=7ms state_commit=86ms) commitHash=[64d4114f1f0096092a0837e083c7164faaf21f565918dce4e4aa0e50714b814f]
+[34m2026-09-28 10:26:52.752 UTC 639c INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:28:50.626Z grpc.peer_address=172.18.0.1:58558 grpc.code=OK grpc.call_duration=2.125094909s
+[34m2026-09-28 10:26:52.812 UTC 639d INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 44ms channel=votingchannel txID=cc164d79
+[34m2026-09-28 10:26:52.875 UTC 639e INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:22.765Z grpc.peer_address=172.18.0.1:58558 grpc.code=OK grpc.call_duration=109.492407ms
+[34m2026-09-28 10:26:52.882 UTC 639f INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=cc164d79cf81176a05f8f8da052cf4199445e78efa17fdd9ea037912060d0776 endpoint=orderer1.orgorderer.example.com:7050
+[34m2026-09-28 10:26:52.883 UTC 63a0 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:27:02.88Z grpc.peer_address=172.18.0.1:58558 grpc.code=OK grpc.call_duration=1.550902ms
+[34m2026-09-28 10:26:54.898 UTC 63a1 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2981] from buffer channel=votingchannel
+[34m2026-09-28 10:26:54.899 UTC 63a2 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2981] in 0ms
+[34m2026-09-28 10:26:55.013 UTC 63a3 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2981] with 1 transaction(s) in 113ms (state_validation=8ms block_and_pvtdata_commit=9ms state_commit=91ms) commitHash=[1d6356f553a3c41fc48332871364b38c176412ad7e9ee9f7959b4d7a1bb9b328]
+[34m2026-09-28 10:26:55.013 UTC 63a4 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:28:52.889Z grpc.peer_address=172.18.0.1:58558 grpc.code=OK grpc.call_duration=2.123263961s
+[34m2026-09-28 10:26:55.052 UTC 63a5 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 28ms channel=votingchannel txID=c15c9b1e
+[34m2026-09-28 10:26:55.053 UTC 63a6 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:27:05.019Z grpc.peer_address=172.18.0.1:58558 grpc.code=OK grpc.call_duration=32.849782ms
+[34m2026-09-28 10:26:55.087 UTC 63a7 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 16ms channel=votingchannel txID=32a049c9
+[33m2026-09-28 10:26:55.087 UTC 63a8 WARN[0m [gateway] [33;1mfunc1[0m -> Endorse call to endorser failed channel=votingchannel chaincode=voting txID=32a049c913ff03067138eeba823ddf1c159820c5de6feae8a237e6eb820bdda2 endorserAddress=peer0.orgiebc.example.com:7051 endorserMspid=OrgIEBCMSP error="chaincode response 500, ERR_NONCE_USED"
+[34m2026-09-28 10:26:55.087 UTC 63a9 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:25.067Z grpc.peer_address=172.18.0.1:58558 error="rpc error: code = Aborted desc = failed to endorse transaction, see attached details for more info" grpc.code=Aborted grpc.call_duration=18.846392ms
+[34m2026-09-28 10:26:55.123 UTC 63aa INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 18ms channel=votingchannel txID=c0db627f
+[34m2026-09-28 10:26:55.123 UTC 63ab INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:27:05.1Z grpc.peer_address=172.18.0.1:58558 grpc.code=OK grpc.call_duration=20.662942ms
+[34m2026-09-28 10:26:55.844 UTC 63ac INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 29ms channel=votingchannel txID=c1fae753
+[34m2026-09-28 10:26:55.851 UTC 63ad INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:25.764Z grpc.peer_address=172.18.0.1:58572 grpc.code=OK grpc.call_duration=38.139878ms
+[34m2026-09-28 10:26:55.870 UTC 63ae INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=c1fae7535b172cdfc84fe9154498f28ea4aa04bf3fb8d4dbcca483c23e07f585 endpoint=orderer3.orgorderer.example.com:9050
+[34m2026-09-28 10:26:55.873 UTC 63af INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:27:05.869Z grpc.peer_address=172.18.0.1:58572 grpc.code=OK grpc.call_duration=2.757912ms
+[34m2026-09-28 10:26:57.887 UTC 63b0 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2982] from buffer channel=votingchannel
+[34m2026-09-28 10:26:57.891 UTC 63b1 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2982] in 3ms
+[34m2026-09-28 10:26:57.891 UTC 63b2 INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2982] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:26:58.009 UTC 63b3 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2982] with 1 transaction(s) in 117ms (state_validation=8ms block_and_pvtdata_commit=7ms state_commit=99ms) commitHash=[5dbc1b6e649b2d2251348e0eab8cb44220e29832eab2e72ea608e9e6efe8376c]
+[34m2026-09-28 10:26:58.011 UTC 63b4 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:28:55.879Z grpc.peer_address=172.18.0.1:58572 grpc.code=OK grpc.call_duration=2.132493233s
+[34m2026-09-28 10:26:58.030 UTC 63b5 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 6ms channel=votingchannel txID=93c64abe
+[33m2026-09-28 10:26:58.030 UTC 63b6 WARN[0m [gateway] [33;1mfunc1[0m -> Endorse call to endorser failed channel=votingchannel chaincode=voting txID=93c64abe9cf6a40e097ed44d66ff29a142f07f72ac07449feee3dc3b166ed06b endorserAddress=peer0.orgiebc.example.com:7051 endorserMspid=OrgIEBCMSP error="chaincode response 500, ERR_BAD_SIGNATURE"
+[34m2026-09-28 10:26:58.030 UTC 63b7 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:28.022Z grpc.peer_address=172.18.0.1:58572 error="rpc error: code = Aborted desc = failed to endorse transaction, see attached details for more info" grpc.code=Aborted grpc.call_duration=7.570419ms
+[34m2026-09-28 10:26:58.071 UTC 63b8 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 27ms channel=votingchannel txID=abb27279
+[34m2026-09-28 10:26:58.071 UTC 63b9 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:27:08.042Z grpc.peer_address=172.18.0.1:58572 grpc.code=OK grpc.call_duration=28.346533ms
+[34m2026-09-28 10:26:58.748 UTC 63ba INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 24ms channel=votingchannel txID=8aed8ea0
+[34m2026-09-28 10:26:58.757 UTC 63bb INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:28.682Z grpc.peer_address=172.18.0.1:34602 grpc.code=OK grpc.call_duration=34.321522ms
+[34m2026-09-28 10:26:58.791 UTC 63bc INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=8aed8ea0a8c8312241c9a5428d75222cead4d5c19a726a9ffedbff49b185f780 endpoint=orderer3.orgorderer.example.com:9050
+[34m2026-09-28 10:26:58.793 UTC 63bd INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:27:08.789Z grpc.peer_address=172.18.0.1:34602 grpc.code=OK grpc.call_duration=2.669096ms
+[34m2026-09-28 10:27:00.808 UTC 63be INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2983] from buffer channel=votingchannel
+[34m2026-09-28 10:27:00.810 UTC 63bf INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2983] in 1ms
+[34m2026-09-28 10:27:00.810 UTC 63c0 INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2983] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:27:00.927 UTC 63c1 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2983] with 1 transaction(s) in 116ms (state_validation=7ms block_and_pvtdata_commit=6ms state_commit=98ms) commitHash=[820ebf9424fb376c9d4b54eab1994a7a836ec22d7c2449f71d1b4ac38017495e]
+[34m2026-09-28 10:27:00.928 UTC 63c2 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:28:58.814Z grpc.peer_address=172.18.0.1:34602 grpc.code=OK grpc.call_duration=2.111960807s
+[34m2026-09-28 10:27:00.950 UTC 63c3 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 6ms channel=votingchannel txID=7a418485
+[33m2026-09-28 10:27:00.950 UTC 63c4 WARN[0m [gateway] [33;1mfunc1[0m -> Endorse call to endorser failed channel=votingchannel chaincode=voting txID=7a4184855315c8970eb69174b3d7c300b5f30e513b9cb6a2387edeb41b871811 endorserAddress=peer0.orgiebc.example.com:7051 endorserMspid=OrgIEBCMSP error="chaincode response 500, ERR_BAD_SIGNATURE"
+[34m2026-09-28 10:27:00.950 UTC 63c5 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:30.942Z grpc.peer_address=172.18.0.1:34602 error="rpc error: code = Aborted desc = failed to endorse transaction, see attached details for more info" grpc.code=Aborted grpc.call_duration=7.273535ms
+[34m2026-09-28 10:27:00.982 UTC 63c6 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 18ms channel=votingchannel txID=85d90632
+[34m2026-09-28 10:27:00.982 UTC 63c7 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:27:10.961Z grpc.peer_address=172.18.0.1:34602 grpc.code=OK grpc.call_duration=19.634907ms
+[34m2026-09-28 10:27:01.626 UTC 63c8 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 23ms channel=votingchannel txID=ab575239
+[34m2026-09-28 10:27:01.636 UTC 63c9 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:31.558Z grpc.peer_address=172.18.0.1:34610 grpc.code=OK grpc.call_duration=36.572665ms
+[34m2026-09-28 10:27:01.661 UTC 63ca INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=ab5752393351fdee6ab7d7eac6c8565fb2a9f5adf5d430c1be27b1f3bd0a7ecf endpoint=orderer3.orgorderer.example.com:9050
+[34m2026-09-28 10:27:01.662 UTC 63cb INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:27:11.659Z grpc.peer_address=172.18.0.1:34610 grpc.code=OK grpc.call_duration=2.055225ms
+[34m2026-09-28 10:27:03.676 UTC 63cc INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2984] from buffer channel=votingchannel
+[34m2026-09-28 10:27:03.678 UTC 63cd INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2984] in 1ms
+[34m2026-09-28 10:27:03.678 UTC 63ce INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2984] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:27:03.822 UTC 63cf INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2984] with 1 transaction(s) in 143ms (state_validation=13ms block_and_pvtdata_commit=9ms state_commit=117ms) commitHash=[35b828804e14cb94661b10e6f19722393b32161f93e7dc51e4b555f269243270]
+[34m2026-09-28 10:27:03.822 UTC 63d0 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:29:01.669Z grpc.peer_address=172.18.0.1:34610 grpc.code=OK grpc.call_duration=2.152612327s
+[34m2026-09-28 10:27:03.886 UTC 63d1 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 10ms channel=votingchannel txID=63213524
+[33m2026-09-28 10:27:03.888 UTC 63d2 WARN[0m [gateway] [33;1mfunc1[0m -> Endorse call to endorser failed channel=votingchannel chaincode=voting txID=63213524f979a5a530b1acf50815aad438e84eb1eb8358cdf25fe7d11b8ebcba endorserAddress=peer0.orgiebc.example.com:7051 endorserMspid=OrgIEBCMSP error="chaincode response 500, ERR_BAD_SIGNATURE"
+[34m2026-09-28 10:27:03.889 UTC 63d3 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:33.873Z grpc.peer_address=172.18.0.1:34610 error="rpc error: code = Aborted desc = failed to endorse transaction, see attached details for more info" grpc.code=Aborted grpc.call_duration=15.971646ms
+[34m2026-09-28 10:27:03.937 UTC 63d4 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 31ms channel=votingchannel txID=bab38c4f
+[34m2026-09-28 10:27:03.938 UTC 63d5 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:27:13.903Z grpc.peer_address=172.18.0.1:34610 grpc.code=OK grpc.call_duration=33.277242ms
+[34m2026-09-28 10:27:04.905 UTC 63d6 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 19ms channel=votingchannel txID=39c07c61
+[34m2026-09-28 10:27:04.918 UTC 63d7 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:34.839Z grpc.peer_address=172.18.0.1:34624 grpc.code=OK grpc.call_duration=34.335254ms
+[34m2026-09-28 10:27:04.936 UTC 63d8 INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=39c07c61455854645f3cb08bce5656f87b3175dc8fffac59ce98f517154416d1 endpoint=orderer3.orgorderer.example.com:9050
+[34m2026-09-28 10:27:04.939 UTC 63d9 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:27:14.935Z grpc.peer_address=172.18.0.1:34624 grpc.code=OK grpc.call_duration=3.207988ms
+[34m2026-09-28 10:27:06.957 UTC 63da INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2985] from buffer channel=votingchannel
+[34m2026-09-28 10:27:06.961 UTC 63db INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2985] in 3ms
+[34m2026-09-28 10:27:06.962 UTC 63dc INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2985] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:27:07.109 UTC 63dd INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2985] with 1 transaction(s) in 145ms (state_validation=13ms block_and_pvtdata_commit=8ms state_commit=120ms) commitHash=[38195223a7fcbfa2ce0de579e86082f30d127204e391347f103589c16f78a772]
+[34m2026-09-28 10:27:07.109 UTC 63de INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:29:04.947Z grpc.peer_address=172.18.0.1:34624 grpc.code=OK grpc.call_duration=2.161476222s
+[34m2026-09-28 10:27:07.738 UTC 63df INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 12ms channel=votingchannel txID=ba09bf80
+[34m2026-09-28 10:27:07.739 UTC 63e0 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:27:17.69Z grpc.peer_address=172.18.0.1:34640 grpc.code=OK grpc.call_duration=14.272486ms
+[34m2026-09-28 10:27:07.980 UTC 63e1 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 42ms channel=votingchannel txID=b6410b34
+[34m2026-09-28 10:27:07.981 UTC 63e2 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.18.0.1:39152 grpc.code=OK grpc.call_duration=43.557998ms
+[34m2026-09-28 10:27:09.995 UTC 63e3 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2986] from buffer channel=votingchannel
+[33m2026-09-28 10:27:09.997 UTC 63e4 WARN[0m [vscc] [33;1mValidate[0m -> Endorsment policy failure error="validation of endorsement policy for chaincode voting in tx 2986:0 failed: signature set did not satisfy policy" chaincode=voting endorsementPolicy="signature_policy:<rule:<n_out_of:<n:3 rules:<signed_by:0 > rules:<signed_by:1 > rules:<signed_by:2 > rules:<signed_by:3 > > > identities:<principal:\"\\n\\nOrgIEBCMSP\\020\\003\" > identities:<principal:\"\\n\\017OrgJudiciaryMSP\\020\\003\" > identities:<principal:\"\\n\\022OrgCivilSocietyMSP\\020\\003\" > identities:<principal:\"\\n\\013OrgMediaMSP\\020\\003\" > > " endorsingIdentities="(mspid=OrgIEBCMSP subject=CN=peer0.orgiebc.example.com,OU=peer,L=San Francisco,ST=California,C=US issuer=CN=ca.orgiebc.example.com,O=orgiebc.example.com,L=San Francisco,ST=California,C=US serialnumber=130502238795282612687591541420300670322), (mspid=OrgJudiciaryMSP subject=CN=peer0.orgjudiciary.example.com,OU=peer,L=San Francisco,ST=California,C=US issuer=CN=ca.orgjudiciary.example.com,O=orgjudiciary.example.com,L=San Francisco,ST=California,C=US serialnumber=97560637178301216086738946587399560447)"
+[31m2026-09-28 10:27:09.997 UTC 63e5 ERRO[0m [vscc] [31;1mValidate[0m -> VSCC error: stateBasedValidator.Validate failed, err validation of endorsement policy for chaincode voting in tx 2986:0 failed: signature set did not satisfy policy
+[31m2026-09-28 10:27:09.997 UTC 63e6 ERRO[0m [committer.txvalidator] [31;1mvalidateTx[0m -> Dispatch for transaction txId = b6410b347c3e072dd584185b52615bc20d753d350758af4e691a7fb900ec60f7 returned error: validation of endorsement policy for chaincode voting in tx 2986:0 failed: signature set did not satisfy policy
+[34m2026-09-28 10:27:09.997 UTC 63e7 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2986] in 2ms
+[33m2026-09-28 10:27:09.997 UTC 63e8 WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [2986] Transaction index [0] TxId [b6410b347c3e072dd584185b52615bc20d753d350758af4e691a7fb900ec60f7] marked as invalid by committer. Reason code [ENDORSEMENT_POLICY_FAILURE]
+[34m2026-09-28 10:27:10.044 UTC 63e9 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2986] with 1 transaction(s) in 46ms (state_validation=0ms block_and_pvtdata_commit=7ms state_commit=37ms) commitHash=[1cdc7936a0b76a16ffe8aeb7f11dccef61cf2695d36de0ef98b0e95f3bdd4c2e]
+[34m2026-09-28 10:27:12.153 UTC 63ea INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: qscc duration: 1ms channel= txID=0b60f17a
+[34m2026-09-28 10:27:12.153 UTC 63eb INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.18.0.1:39168 grpc.code=OK grpc.call_duration=1.937954ms
+[33m2026-09-28 10:27:12.270 UTC 63ec WARN[0m [common.deliver] [33;1mHandle[0m -> Error reading from 172.18.0.1:39176: rpc error: code = Canceled desc = context canceled
+[34m2026-09-28 10:27:12.270 UTC 63ed INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=protos.Deliver grpc.method=Deliver grpc.peer_address=172.18.0.1:39176 error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=11.159492ms
+[34m2026-09-28 10:27:12.841 UTC 63ee INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 12ms channel=votingchannel txID=04807747
+[34m2026-09-28 10:27:12.842 UTC 63ef INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:27:22.78Z grpc.peer_address=172.18.0.1:39184 grpc.code=OK grpc.call_duration=14.308939ms
+[34m2026-09-28 10:27:13.550 UTC 63f0 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 24ms channel=votingchannel txID=45c5fafd
+[34m2026-09-28 10:27:13.568 UTC 63f1 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:43.486Z grpc.peer_address=172.18.0.1:39190 grpc.code=OK grpc.call_duration=43.435425ms
+[34m2026-09-28 10:27:13.587 UTC 63f2 INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=45c5fafd13ff5043f7e4b1d30d911267e401fce2a884176e9315f03372f5f274 endpoint=orderer1.orgorderer.example.com:7050
+[34m2026-09-28 10:27:13.588 UTC 63f3 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:27:23.586Z grpc.peer_address=172.18.0.1:39190 grpc.code=OK grpc.call_duration=1.536284ms
+[34m2026-09-28 10:27:15.612 UTC 63f4 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2987] from buffer channel=votingchannel
+[34m2026-09-28 10:27:15.619 UTC 63f5 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2987] in 6ms
+[34m2026-09-28 10:27:15.620 UTC 63f6 INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2987] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:27:15.763 UTC 63f7 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2987] with 1 transaction(s) in 141ms (state_validation=8ms block_and_pvtdata_commit=7ms state_commit=122ms) commitHash=[fbf6f01c35de916d4c217505ba97e444db2ee3a8c803ffba74e12379b7557316]
+[34m2026-09-28 10:27:15.765 UTC 63f8 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:29:13.599Z grpc.peer_address=172.18.0.1:39190 grpc.code=OK grpc.call_duration=2.1650929s
+[34m2026-09-28 10:27:16.324 UTC 63f9 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 15ms channel=votingchannel txID=cab9d1a0
+[34m2026-09-28 10:27:16.325 UTC 63fa INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:27:26.271Z grpc.peer_address=172.18.0.1:39196 grpc.code=OK grpc.call_duration=16.672301ms
+[34m2026-09-28 10:27:16.527 UTC 63fb INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 32ms channel=votingchannel txID=63c9ddf6
+[34m2026-09-28 10:27:16.528 UTC 63fc INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.18.0.1:39210 grpc.code=OK grpc.call_duration=34.165943ms
+[34m2026-09-28 10:27:18.565 UTC 63fd INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2988] from buffer channel=votingchannel
+[33m2026-09-28 10:27:18.568 UTC 63fe WARN[0m [vscc] [33;1mValidate[0m -> Endorsment policy failure error="validation of endorsement policy for chaincode voting in tx 2988:0 failed: signature set did not satisfy policy" chaincode=voting endorsementPolicy="signature_policy:<rule:<n_out_of:<n:3 rules:<signed_by:0 > rules:<signed_by:1 > rules:<signed_by:2 > rules:<signed_by:3 > > > identities:<principal:\"\\n\\nOrgIEBCMSP\\020\\003\" > identities:<principal:\"\\n\\017OrgJudiciaryMSP\\020\\003\" > identities:<principal:\"\\n\\022OrgCivilSocietyMSP\\020\\003\" > identities:<principal:\"\\n\\013OrgMediaMSP\\020\\003\" > > " endorsingIdentities="(mspid=OrgIEBCMSP subject=CN=peer0.orgiebc.example.com,OU=peer,L=San Francisco,ST=California,C=US issuer=CN=ca.orgiebc.example.com,O=orgiebc.example.com,L=San Francisco,ST=California,C=US serialnumber=130502238795282612687591541420300670322), (mspid=OrgJudiciaryMSP subject=CN=peer0.orgjudiciary.example.com,OU=peer,L=San Francisco,ST=California,C=US issuer=CN=ca.orgjudiciary.example.com,O=orgjudiciary.example.com,L=San Francisco,ST=California,C=US serialnumber=97560637178301216086738946587399560447)"
+[31m2026-09-28 10:27:18.568 UTC 63ff ERRO[0m [vscc] [31;1mValidate[0m -> VSCC error: stateBasedValidator.Validate failed, err validation of endorsement policy for chaincode voting in tx 2988:0 failed: signature set did not satisfy policy
+[31m2026-09-28 10:27:18.569 UTC 6400 ERRO[0m [committer.txvalidator] [31;1mvalidateTx[0m -> Dispatch for transaction txId = 63c9ddf6cb06f199c8c7298ba2de18c1d33e6e5fd1c5531820904eb11f6bcccb returned error: validation of endorsement policy for chaincode voting in tx 2988:0 failed: signature set did not satisfy policy
+[34m2026-09-28 10:27:18.569 UTC 6401 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2988] in 4ms
+[33m2026-09-28 10:27:18.569 UTC 6402 WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [2988] Transaction index [0] TxId [63c9ddf6cb06f199c8c7298ba2de18c1d33e6e5fd1c5531820904eb11f6bcccb] marked as invalid by committer. Reason code [ENDORSEMENT_POLICY_FAILURE]
+[34m2026-09-28 10:27:18.606 UTC 6403 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2988] with 1 transaction(s) in 36ms (state_validation=0ms block_and_pvtdata_commit=5ms state_commit=28ms) commitHash=[13cad3675bf8eac1cf899be83d0168ee882d4851dfec4b1058ba57af5bab3519]
+[34m2026-09-28 10:27:20.743 UTC 6404 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: qscc duration: 0ms channel= txID=4b6acedb
+[34m2026-09-28 10:27:20.744 UTC 6405 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.18.0.1:49872 grpc.code=OK grpc.call_duration=1.589874ms
+[33m2026-09-28 10:27:20.872 UTC 6406 WARN[0m [common.deliver] [33;1mHandle[0m -> Error reading from 172.18.0.1:49874: rpc error: code = Canceled desc = context canceled
+[34m2026-09-28 10:27:20.872 UTC 6407 INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=protos.Deliver grpc.method=Deliver grpc.peer_address=172.18.0.1:49874 error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=9.344423ms
+[34m2026-09-28 10:27:21.351 UTC 6408 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 13ms channel=votingchannel txID=aca929a6
+[34m2026-09-28 10:27:21.352 UTC 6409 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:27:31.3Z grpc.peer_address=172.18.0.1:49876 grpc.code=OK grpc.call_duration=14.31771ms
+[34m2026-09-28 10:27:21.996 UTC 640a INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 20ms channel=votingchannel txID=10b2b566
+[34m2026-09-28 10:27:22.007 UTC 640b INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:27:51.943Z grpc.peer_address=172.18.0.1:49882 grpc.code=OK grpc.call_duration=35.368708ms
+[34m2026-09-28 10:27:22.021 UTC 640c INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=10b2b5660e6c9734b4f14d76f804448a890aaa677aa4b9c6b1736ced69226321 endpoint=orderer2.orgorderer.example.com:8050
+[34m2026-09-28 10:27:22.023 UTC 640d INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:27:32.019Z grpc.peer_address=172.18.0.1:49882 grpc.code=OK grpc.call_duration=2.032476ms
+[34m2026-09-28 10:27:24.040 UTC 640e INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2989] from buffer channel=votingchannel
+[34m2026-09-28 10:27:24.044 UTC 640f INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2989] in 3ms
+[34m2026-09-28 10:27:24.049 UTC 6410 INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2989] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:27:24.168 UTC 6411 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2989] with 1 transaction(s) in 118ms (state_validation=15ms block_and_pvtdata_commit=10ms state_commit=90ms) commitHash=[09397e52be3f21bbf48bb0036287a4d231e98709beec11490e09d35e069151fa]
+[34m2026-09-28 10:27:24.168 UTC 6412 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:29:22.029Z grpc.peer_address=172.18.0.1:49882 grpc.code=OK grpc.call_duration=2.137825574s
+[34m2026-09-28 10:27:24.838 UTC 6413 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 10ms channel=votingchannel txID=f8e1afef
+[34m2026-09-28 10:27:24.839 UTC 6414 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:27:34.788Z grpc.peer_address=172.18.0.1:49884 grpc.code=OK grpc.call_duration=13.296657ms
+[34m2026-09-28 10:27:25.057 UTC 6415 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 45ms channel=votingchannel txID=4a077e27
+[34m2026-09-28 10:27:25.058 UTC 6416 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.18.0.1:49894 grpc.code=OK grpc.call_duration=47.054385ms
+[34m2026-09-28 10:27:27.073 UTC 6417 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2990] from buffer channel=votingchannel
+[33m2026-09-28 10:27:27.074 UTC 6418 WARN[0m [vscc] [33;1mValidate[0m -> Endorsment policy failure error="validation of endorsement policy for chaincode voting in tx 2990:0 failed: signature set did not satisfy policy" chaincode=voting endorsementPolicy="signature_policy:<rule:<n_out_of:<n:3 rules:<signed_by:0 > rules:<signed_by:1 > rules:<signed_by:2 > rules:<signed_by:3 > > > identities:<principal:\"\\n\\nOrgIEBCMSP\\020\\003\" > identities:<principal:\"\\n\\017OrgJudiciaryMSP\\020\\003\" > identities:<principal:\"\\n\\022OrgCivilSocietyMSP\\020\\003\" > identities:<principal:\"\\n\\013OrgMediaMSP\\020\\003\" > > " endorsingIdentities="(mspid=OrgJudiciaryMSP subject=CN=peer0.orgjudiciary.example.com,OU=peer,L=San Francisco,ST=California,C=US issuer=CN=ca.orgjudiciary.example.com,O=orgjudiciary.example.com,L=San Francisco,ST=California,C=US serialnumber=97560637178301216086738946587399560447), (mspid=OrgIEBCMSP subject=CN=peer0.orgiebc.example.com,OU=peer,L=San Francisco,ST=California,C=US issuer=CN=ca.orgiebc.example.com,O=orgiebc.example.com,L=San Francisco,ST=California,C=US serialnumber=130502238795282612687591541420300670322)"
+[31m2026-09-28 10:27:27.074 UTC 6419 ERRO[0m [vscc] [31;1mValidate[0m -> VSCC error: stateBasedValidator.Validate failed, err validation of endorsement policy for chaincode voting in tx 2990:0 failed: signature set did not satisfy policy
+[31m2026-09-28 10:27:27.074 UTC 641a ERRO[0m [committer.txvalidator] [31;1mvalidateTx[0m -> Dispatch for transaction txId = 4a077e27909fb3ded54402d482dc15cad26cf53564a6b151cab74d38069b6fac returned error: validation of endorsement policy for chaincode voting in tx 2990:0 failed: signature set did not satisfy policy
+[34m2026-09-28 10:27:27.074 UTC 641b INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2990] in 1ms
+[33m2026-09-28 10:27:27.074 UTC 641c WARN[0m [validation] [33;1mpreprocessProtoBlock[0m -> Channel [votingchannel]: Block [2990] Transaction index [0] TxId [4a077e27909fb3ded54402d482dc15cad26cf53564a6b151cab74d38069b6fac] marked as invalid by committer. Reason code [ENDORSEMENT_POLICY_FAILURE]
+[34m2026-09-28 10:27:27.115 UTC 641d INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2990] with 1 transaction(s) in 41ms (state_validation=0ms block_and_pvtdata_commit=8ms state_commit=31ms) commitHash=[9e3913f19f9aebc5547d7998019f8c580d319aa790647965549443b49cc01968]
+[34m2026-09-28 10:27:29.322 UTC 641e INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: qscc duration: 0ms channel= txID=50023e2e
+[34m2026-09-28 10:27:29.322 UTC 641f INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.18.0.1:59908 grpc.code=OK grpc.call_duration=2.16848ms
+[33m2026-09-28 10:27:29.463 UTC 6420 WARN[0m [common.deliver] [33;1mHandle[0m -> Error reading from 172.18.0.1:59924: rpc error: code = Canceled desc = context canceled
+[34m2026-09-28 10:27:29.463 UTC 6421 INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=protos.Deliver grpc.method=Deliver grpc.peer_address=172.18.0.1:59924 error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=22.353166ms
+[34m2026-09-28 10:27:30.015 UTC 6422 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 9ms channel=votingchannel txID=d93d694b
+[34m2026-09-28 10:27:30.016 UTC 6423 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:27:39.969Z grpc.peer_address=172.18.0.1:59934 grpc.code=OK grpc.call_duration=10.956274ms
+[34m2026-09-28 10:27:30.703 UTC 6424 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 19ms channel=votingchannel txID=914c9163
+[34m2026-09-28 10:27:30.729 UTC 6425 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:28:00.642Z grpc.peer_address=172.18.0.1:59938 grpc.code=OK grpc.call_duration=47.120334ms
+[34m2026-09-28 10:27:30.749 UTC 6426 INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=914c91634a3f4fd6418fea3d4c945edfe042d007ed5d0d74f3280697799d0145 endpoint=orderer2.orgorderer.example.com:8050
+[34m2026-09-28 10:27:30.756 UTC 6427 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:27:40.748Z grpc.peer_address=172.18.0.1:59938 grpc.code=OK grpc.call_duration=6.138855ms
+[34m2026-09-28 10:27:32.767 UTC 6428 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2991] from buffer channel=votingchannel
+[34m2026-09-28 10:27:32.771 UTC 6429 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2991] in 2ms
+[34m2026-09-28 10:27:32.772 UTC 642a INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2991] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:27:32.932 UTC 642b INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2991] with 1 transaction(s) in 159ms (state_validation=7ms block_and_pvtdata_commit=7ms state_commit=141ms) commitHash=[bf6061f2c7e7f9f7938fde5102e7b53a0222d56d0016e1439759b3172da6021a]
+[34m2026-09-28 10:27:32.932 UTC 642c INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:29:30.764Z grpc.peer_address=172.18.0.1:59938 grpc.code=OK grpc.call_duration=2.167322653s
+[34m2026-09-28 10:27:32.985 UTC 642d INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 28ms channel=votingchannel txID=dee25bfe
+[34m2026-09-28 10:27:33.028 UTC 642e INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:28:02.954Z grpc.peer_address=172.18.0.1:59938 grpc.code=OK grpc.call_duration=73.411653ms
+[34m2026-09-28 10:27:33.035 UTC 642f INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=dee25bfebed9a0f83d2539fe7fc8ecd5e488c86b80ceec6f626798efe75c1166 endpoint=orderer2.orgorderer.example.com:8050
+[34m2026-09-28 10:27:33.038 UTC 6430 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:27:43.034Z grpc.peer_address=172.18.0.1:59938 grpc.code=OK grpc.call_duration=2.78526ms
+[34m2026-09-28 10:27:35.049 UTC 6431 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2992] from buffer channel=votingchannel
+[34m2026-09-28 10:27:35.052 UTC 6432 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2992] in 2ms
+[34m2026-09-28 10:27:35.221 UTC 6433 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2992] with 1 transaction(s) in 169ms (state_validation=17ms block_and_pvtdata_commit=11ms state_commit=136ms) commitHash=[1c254f30943acfb12f2524a20cd49752da987ea7c021fc108e379b0393f130bb]
+[34m2026-09-28 10:27:35.222 UTC 6434 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:29:33.049Z grpc.peer_address=172.18.0.1:59938 grpc.code=OK grpc.call_duration=2.17241662s
+[34m2026-09-28 10:27:35.250 UTC 6435 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 16ms channel=votingchannel txID=bca23723
+[34m2026-09-28 10:27:35.251 UTC 6436 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:27:45.231Z grpc.peer_address=172.18.0.1:59938 grpc.code=OK grpc.call_duration=17.526114ms
+[34m2026-09-28 10:27:35.478 UTC 6437 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 21ms channel=votingchannel txID=785e64fe
+[34m2026-09-28 10:27:35.499 UTC 6438 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:28:05.454Z grpc.peer_address=172.18.0.1:59938 grpc.code=OK grpc.call_duration=44.518324ms
+[34m2026-09-28 10:27:35.508 UTC 6439 INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=785e64fe7cccdcc3b9b86a48d16a402cecac740b578901866aa50793805f2528 endpoint=orderer3.orgorderer.example.com:9050
+[34m2026-09-28 10:27:35.510 UTC 643a INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:27:45.507Z grpc.peer_address=172.18.0.1:59938 grpc.code=OK grpc.call_duration=2.559502ms
+[34m2026-09-28 10:27:37.530 UTC 643b INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2993] from buffer channel=votingchannel
+[34m2026-09-28 10:27:37.534 UTC 643c INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2993] in 3ms
+[34m2026-09-28 10:27:37.536 UTC 643d INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2993] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:27:37.681 UTC 643e INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2993] with 1 transaction(s) in 144ms (state_validation=16ms block_and_pvtdata_commit=5ms state_commit=119ms) commitHash=[88a76740f68d55422f5f1e0a89ec01eeca7b6c731e3ef3bf459923888c58cda4]
+[34m2026-09-28 10:27:37.688 UTC 643f INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:29:35.514Z grpc.peer_address=172.18.0.1:59938 grpc.code=OK grpc.call_duration=2.172244332s
+[34m2026-09-28 10:27:37.754 UTC 6440 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 52ms channel=votingchannel txID=6bca10f6
+[33m2026-09-28 10:27:37.790 UTC 6441 WARN[0m [gateway] [33;1mprocessEndorsement[0m -> ProposalResponsePayloads do not match. See [gateway.responsechecker] log warnings for details.
+[33m2026-09-28 10:27:37.791 UTC 6442 WARN[0m [gateway.responsechecker] [33;1mprocessEndorsement[0m -> Compared to the initial endorser's response, the following log entries detail the differences in this invoked endorser's response. initial-endorser="peer0.orgiebc.example.com:7051 (OrgIEBCMSP)" invoked-endorser="peer0.orgmedia.example.com:7081 (OrgMediaMSP)"
+[33m2026-09-28 10:27:37.791 UTC 6443 WARN[0m [gateway.responsechecker] [33;1mprocessEndorsement[0m -> Proposal response mismatch: initial-endorser="peer0.orgiebc.example.com:7051 (OrgIEBCMSP)" invoked-endorser="peer0.orgmedia.example.com:7081 (OrgMediaMSP)" type="write value mismatch" namespace=voting key="\u0000TALLY\u0000test2-run1-1790591250474\u0000C001\u0000" initial-endorser-value=2 invoked-endorser-value=10000
+[34m2026-09-28 10:27:37.791 UTC 6444 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:28:07.698Z grpc.peer_address=172.18.0.1:59938 error="rpc error: code = Aborted desc = failed to collect enough transaction endorsements, see attached details for more info" grpc.code=Aborted grpc.call_duration=91.360627ms
+[34m2026-09-28 10:27:38.162 UTC 6445 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: qscc duration: 0ms channel= txID=ec74fffa
+[34m2026-09-28 10:27:38.163 UTC 6446 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.18.0.1:53648 grpc.code=OK grpc.call_duration=1.424515ms
+[34m2026-09-28 10:27:43.277 UTC 6447 INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=gossip.Gossip grpc.method=GossipStream grpc.peer_address=172.18.0.14:52970 grpc.peer_subject="CN=peer0.orgmedia.example.com,L=San Francisco,ST=California,C=US" error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=1h44m6.292156115s
+[33m2026-09-28 10:27:47.300 UTC 6448 WARN[0m [gossip.comm] [33;1msendToEndpoint[0m -> Failed obtaining connection for peer0.orgmedia.example.com:7081, PKIid:c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0 reason: context deadline exceeded
+[33m2026-09-28 10:27:47.301 UTC 6449 WARN[0m [gossip.discovery] [33;1mexpireDeadMembers[0m -> Entering [c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0]
+[33m2026-09-28 10:27:47.301 UTC 644a WARN[0m [gossip.discovery] [33;1mexpireDeadMembers[0m -> Closing connection to Endpoint: peer0.orgmedia.example.com:7081, InternalEndpoint: , PKI-ID: c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0, Metadata: 
+[33m2026-09-28 10:27:47.301 UTC 644b WARN[0m [gossip.discovery] [33;1mexpireDeadMembers[0m -> Exiting
+[34m2026-09-28 10:27:49.126 UTC 644c INFO[0m [gossip.channel] [34;1mreportMembershipChanges[0m -> [[votingchannel] Membership view has changed. peers went offline:  [[peer0.orgmedia.example.com:7081 ]] , current view:  [[peer0.orgjudiciary.example.com:7061 ] [peer0.orgcivilsociety.example.com:7071 ]]]
+[33m2026-09-28 10:27:50.303 UTC 644d WARN[0m [gossip.comm] [33;1msendToEndpoint[0m -> Failed obtaining connection for peer0.orgmedia.example.com:7081, PKIid:c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0 reason: context deadline exceeded
+[33m2026-09-28 10:27:53.304 UTC 644e WARN[0m [gossip.comm] [33;1msendToEndpoint[0m -> Failed obtaining connection for peer0.orgmedia.example.com:7081, PKIid:c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0 reason: context deadline exceeded
+[33m2026-09-28 10:27:56.306 UTC 644f WARN[0m [gossip.comm] [33;1msendToEndpoint[0m -> Failed obtaining connection for peer0.orgmedia.example.com:7081, PKIid:c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0 reason: context deadline exceeded
+[34m2026-09-28 10:30:31.165 UTC 6450 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 21ms channel=votingchannel txID=338826ab
+[34m2026-09-28 10:30:31.198 UTC 6451 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:31:01.101Z grpc.peer_address=172.18.0.1:47512 grpc.code=OK grpc.call_duration=55.858058ms
+[34m2026-09-28 10:30:31.232 UTC 6452 INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=338826abe00f757546e8d219a59afbe38640fecb68cc3fd5cf9ee702ea0ba272 endpoint=orderer2.orgorderer.example.com:8050
+[34m2026-09-28 10:30:31.238 UTC 6453 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:30:41.231Z grpc.peer_address=172.18.0.1:47512 grpc.code=OK grpc.call_duration=5.888876ms
+[34m2026-09-28 10:30:33.251 UTC 6454 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2994] from buffer channel=votingchannel
+[34m2026-09-28 10:30:33.253 UTC 6455 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2994] in 1ms
+[34m2026-09-28 10:30:33.253 UTC 6456 INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2994] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:30:33.393 UTC 6457 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2994] with 1 transaction(s) in 139ms (state_validation=8ms block_and_pvtdata_commit=6ms state_commit=119ms) commitHash=[12074f4b639ba68b7f7b1ba2d38561d3f26ab5a4b5e75f38965d7fda14115561]
+[34m2026-09-28 10:30:33.393 UTC 6458 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:32:31.25Z grpc.peer_address=172.18.0.1:47512 grpc.code=OK grpc.call_duration=2.140537224s
+[34m2026-09-28 10:30:33.452 UTC 6459 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 44ms channel=votingchannel txID=6de37ea7
+[34m2026-09-28 10:30:33.523 UTC 645a INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:31:03.405Z grpc.peer_address=172.18.0.1:47512 grpc.code=OK grpc.call_duration=116.451245ms
+[34m2026-09-28 10:30:33.531 UTC 645b INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=6de37ea7005254a68b89ec8fa5b5b546a2f898fed2d594898a8162cb957e5919 endpoint=orderer2.orgorderer.example.com:8050
+[34m2026-09-28 10:30:33.533 UTC 645c INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:30:43.529Z grpc.peer_address=172.18.0.1:47512 grpc.code=OK grpc.call_duration=2.25866ms
+[34m2026-09-28 10:30:35.554 UTC 645d INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2995] from buffer channel=votingchannel
+[34m2026-09-28 10:30:35.560 UTC 645e INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2995] in 4ms
+[34m2026-09-28 10:30:35.708 UTC 645f INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2995] with 1 transaction(s) in 147ms (state_validation=22ms block_and_pvtdata_commit=7ms state_commit=111ms) commitHash=[01d0fe3fbbe85ce2da9595aaede3237ada3c19f74638518b66f7cb67c39f41c0]
+[34m2026-09-28 10:30:35.708 UTC 6460 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:32:33.541Z grpc.peer_address=172.18.0.1:47512 grpc.code=OK grpc.call_duration=2.166157141s
+[34m2026-09-28 10:30:35.746 UTC 6461 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 27ms channel=votingchannel txID=c8d697a4
+[34m2026-09-28 10:30:35.747 UTC 6462 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:30:45.717Z grpc.peer_address=172.18.0.1:47512 grpc.code=OK grpc.call_duration=29.550338ms
+[34m2026-09-28 10:30:42.409 UTC 6463 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: qscc duration: 0ms channel= txID=72cbb171
+[34m2026-09-28 10:30:42.409 UTC 6464 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.18.0.1:37246 grpc.code=OK grpc.call_duration=917.663µs
+[34m2026-09-28 10:31:27.863 UTC 6465 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2026-09-28T10:31:29.863Z grpc.peer_address=172.18.0.14:51742 grpc.peer_subject="CN=peer0.orgmedia.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=63.018µs
+[34m2026-09-28 10:31:27.870 UTC 6466 INFO[0m [gossip.comm] [34;1mGossipStream[0m -> Peer c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0 (172.18.0.14:51742) probed us
+[34m2026-09-28 10:31:27.870 UTC 6467 INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=gossip.Gossip grpc.method=GossipStream grpc.request_deadline=2026-09-28T10:31:37.869Z grpc.peer_address=172.18.0.14:51742 grpc.peer_subject="CN=peer0.orgmedia.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=718.188µs
+[34m2026-09-28 10:31:27.882 UTC 6468 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2026-09-28T10:31:29.882Z grpc.peer_address=172.18.0.14:51744 grpc.peer_subject="CN=peer0.orgmedia.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=85.18µs
+[34m2026-09-28 10:31:29.126 UTC 6469 INFO[0m [gossip.channel] [34;1mreportMembershipChanges[0m -> [[votingchannel] Membership view has changed. peers went online:  [[peer0.orgmedia.example.com:7081 ]] , current view:  [[peer0.orgmedia.example.com:7081 ] [peer0.orgjudiciary.example.com:7061 ] [peer0.orgcivilsociety.example.com:7071 ]]]
+[34m2026-09-28 10:31:41.508 UTC 646a INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 14ms channel=votingchannel txID=297afcd0
+[34m2026-09-28 10:31:41.524 UTC 646b INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:32:11.459Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=32.656419ms
+[34m2026-09-28 10:31:41.537 UTC 646c INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=297afcd0c1308eef982c96e60c954a14dbfc34a701149da88cca7c61e2ebc835 endpoint=orderer1.orgorderer.example.com:7050
+[34m2026-09-28 10:31:41.538 UTC 646d INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:31:51.536Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=1.160889ms
+[34m2026-09-28 10:31:43.550 UTC 646e INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2996] from buffer channel=votingchannel
+[34m2026-09-28 10:31:43.551 UTC 646f INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2996] in 1ms
+[34m2026-09-28 10:31:43.555 UTC 6470 INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2996] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:31:43.664 UTC 6471 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2996] with 1 transaction(s) in 109ms (state_validation=12ms block_and_pvtdata_commit=5ms state_commit=89ms) commitHash=[2ee61babdb097611b792d74b547707fc4a915fae6d05218cf37290f032e73c67]
+[34m2026-09-28 10:31:43.665 UTC 6472 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:33:41.541Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=2.123127284s
+[34m2026-09-28 10:31:43.740 UTC 6473 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 48ms channel=votingchannel txID=7c6b5bef
+[34m2026-09-28 10:31:43.830 UTC 6474 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:32:13.689Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=139.792741ms
+[34m2026-09-28 10:31:43.836 UTC 6475 INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=7c6b5bef3ee5274f62ff0213e3044cf0c7940b9b9a710dfe357e3f7863862573 endpoint=orderer1.orgorderer.example.com:7050
+[34m2026-09-28 10:31:43.837 UTC 6476 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:31:53.835Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=1.371184ms
+[34m2026-09-28 10:31:45.851 UTC 6477 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2997] from buffer channel=votingchannel
+[34m2026-09-28 10:31:45.851 UTC 6478 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2997] in 0ms
+[34m2026-09-28 10:31:45.974 UTC 6479 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2997] with 1 transaction(s) in 122ms (state_validation=13ms block_and_pvtdata_commit=9ms state_commit=97ms) commitHash=[d8ab5b014e79178e4e1df20da94ad5543d3b1f9eb301824d509b39b9fbdd50e2]
+[34m2026-09-28 10:31:45.975 UTC 647a INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:33:43.841Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=2.134202602s
+[34m2026-09-28 10:31:46.015 UTC 647b INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 17ms channel=votingchannel txID=c4bb3e14
+[34m2026-09-28 10:31:46.016 UTC 647c INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2026-09-28T10:31:55.996Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=18.628138ms
+[34m2026-09-28 10:31:46.138 UTC 647d INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 16ms channel=votingchannel txID=72434c65
+[34m2026-09-28 10:31:46.158 UTC 647e INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:32:16.119Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=37.976698ms
+[34m2026-09-28 10:31:46.168 UTC 647f INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=72434c65503b74b27531c3bdd17c19c42951edc09489c543fe2421230094e3de endpoint=orderer3.orgorderer.example.com:9050
+[34m2026-09-28 10:31:46.170 UTC 6480 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:31:56.167Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=2.297869ms
+[34m2026-09-28 10:31:48.186 UTC 6481 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2998] from buffer channel=votingchannel
+[34m2026-09-28 10:31:48.189 UTC 6482 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2998] in 3ms
+[34m2026-09-28 10:31:48.190 UTC 6483 INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2998] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:31:48.305 UTC 6484 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2998] with 1 transaction(s) in 115ms (state_validation=6ms block_and_pvtdata_commit=8ms state_commit=96ms) commitHash=[3c2bb64dc9c22a9e80afd8e75beb61ba5c45d61d5b152f112f44060184fd8303]
+[34m2026-09-28 10:31:48.306 UTC 6485 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:33:46.174Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=2.129959616s
+[34m2026-09-28 10:31:48.373 UTC 6486 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 45ms channel=votingchannel txID=2d4e4793
+[33m2026-09-28 10:31:48.418 UTC 6487 WARN[0m [gateway] [33;1mprocessEndorsement[0m -> ProposalResponsePayloads do not match. See [gateway.responsechecker] log warnings for details.
+[33m2026-09-28 10:31:48.418 UTC 6488 WARN[0m [gateway.responsechecker] [33;1mprocessEndorsement[0m -> Compared to the initial endorser's response, the following log entries detail the differences in this invoked endorser's response. initial-endorser="peer0.orgiebc.example.com:7051 (OrgIEBCMSP)" invoked-endorser="peer0.orgmedia.example.com:7081 (OrgMediaMSP)"
+[33m2026-09-28 10:31:48.418 UTC 6489 WARN[0m [gateway.responsechecker] [33;1mprocessEndorsement[0m -> Proposal response mismatch: initial-endorser="peer0.orgiebc.example.com:7051 (OrgIEBCMSP)" invoked-endorser="peer0.orgmedia.example.com:7081 (OrgMediaMSP)" type="write value mismatch" namespace=voting key="\u0000TALLY\u0000test2-run1-1790591501315\u0000C001\u0000" initial-endorser-value=2 invoked-endorser-value=10000
+[34m2026-09-28 10:31:48.418 UTC 648a INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:32:18.319Z grpc.peer_address=172.18.0.1:60474 error="rpc error: code = Aborted desc = failed to collect enough transaction endorsements, see attached details for more info" grpc.code=Aborted grpc.call_duration=97.751939ms
+[34m2026-09-28 10:31:48.720 UTC 648b INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: qscc duration: 1ms channel= txID=30a9b993
+[34m2026-09-28 10:31:48.720 UTC 648c INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.18.0.1:33998 grpc.code=OK grpc.call_duration=1.845574ms
+[34m2026-09-28 10:31:53.792 UTC 648d INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=gossip.Gossip grpc.method=GossipStream grpc.peer_address=172.18.0.14:51744 grpc.peer_subject="CN=peer0.orgmedia.example.com,L=San Francisco,ST=California,C=US" error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=25.907331635s
+[33m2026-09-28 10:31:57.818 UTC 648e WARN[0m [gossip.comm] [33;1msendToEndpoint[0m -> Failed obtaining connection for peer0.orgmedia.example.com:7081, PKIid:c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0 reason: context deadline exceeded
+[33m2026-09-28 10:31:57.818 UTC 648f WARN[0m [gossip.discovery] [33;1mexpireDeadMembers[0m -> Entering [c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0]
+[33m2026-09-28 10:31:57.818 UTC 6490 WARN[0m [gossip.discovery] [33;1mexpireDeadMembers[0m -> Closing connection to Endpoint: peer0.orgmedia.example.com:7081, InternalEndpoint: , PKI-ID: c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0, Metadata: 
+[33m2026-09-28 10:31:57.818 UTC 6491 WARN[0m [gossip.discovery] [33;1mexpireDeadMembers[0m -> Exiting
+[34m2026-09-28 10:31:59.127 UTC 6492 INFO[0m [gossip.channel] [34;1mreportMembershipChanges[0m -> [[votingchannel] Membership view has changed. peers went offline:  [[peer0.orgmedia.example.com:7081 ]] , current view:  [[peer0.orgjudiciary.example.com:7061 ] [peer0.orgcivilsociety.example.com:7071 ]]]
+[33m2026-09-28 10:32:00.821 UTC 6493 WARN[0m [gossip.comm] [33;1msendToEndpoint[0m -> Failed obtaining connection for peer0.orgmedia.example.com:7081, PKIid:c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0 reason: context deadline exceeded
+[33m2026-09-28 10:32:03.822 UTC 6494 WARN[0m [gossip.comm] [33;1msendToEndpoint[0m -> Failed obtaining connection for peer0.orgmedia.example.com:7081, PKIid:c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0 reason: context deadline exceeded
+[33m2026-09-28 10:32:06.824 UTC 6495 WARN[0m [gossip.comm] [33;1msendToEndpoint[0m -> Failed obtaining connection for peer0.orgmedia.example.com:7081, PKIid:c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0 reason: context deadline exceeded
+[34m2026-09-28 10:35:38.438 UTC 6496 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2026-09-28T10:35:40.438Z grpc.peer_address=172.18.0.14:51094 grpc.peer_subject="CN=peer0.orgmedia.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=40.346µs
+[34m2026-09-28 10:35:38.445 UTC 6497 INFO[0m [gossip.comm] [34;1mGossipStream[0m -> Peer c37c4cc3ce9ff6800167852ee7d7f4ab00f4c838f1006300bf0b76537acd98d0 (172.18.0.14:51094) probed us
+[34m2026-09-28 10:35:38.445 UTC 6498 INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=gossip.Gossip grpc.method=GossipStream grpc.request_deadline=2026-09-28T10:35:48.444Z grpc.peer_address=172.18.0.14:51094 grpc.peer_subject="CN=peer0.orgmedia.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=629.492µs
+[34m2026-09-28 10:35:38.460 UTC 6499 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2026-09-28T10:35:40.46Z grpc.peer_address=172.18.0.14:51098 grpc.peer_subject="CN=peer0.orgmedia.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=42.159µs
+[34m2026-09-28 10:35:39.126 UTC 649a INFO[0m [gossip.channel] [34;1mreportMembershipChanges[0m -> [[votingchannel] Membership view has changed. peers went online:  [[peer0.orgmedia.example.com:7081 ]] , current view:  [[peer0.orgmedia.example.com:7081 ] [peer0.orgjudiciary.example.com:7061 ] [peer0.orgcivilsociety.example.com:7071 ]]]
+[34m2026-09-28 10:35:41.360 UTC 649b INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 33ms channel=votingchannel txID=93c2db73
+[34m2026-09-28 10:35:41.375 UTC 649c INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:36:11.324Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=49.299039ms
+[34m2026-09-28 10:35:41.385 UTC 649d INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=93c2db73d84cf030680b55002c71121be10c006887e07d49cadc1a880d79c6c9 endpoint=orderer1.orgorderer.example.com:7050
+[34m2026-09-28 10:35:41.387 UTC 649e INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:35:51.383Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=2.80188ms
+[34m2026-09-28 10:35:43.398 UTC 649f INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2999] from buffer channel=votingchannel
+[34m2026-09-28 10:35:43.402 UTC 64a0 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [2999] in 3ms
+[34m2026-09-28 10:35:43.403 UTC 64a1 INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [2999] (0 from local cache, 1 from transient store, 0 from other peers) channel=votingchannel
+[34m2026-09-28 10:35:43.538 UTC 64a2 INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [2999] with 1 transaction(s) in 134ms (state_validation=15ms block_and_pvtdata_commit=8ms state_commit=108ms) commitHash=[ef7a5dbbd04946f16bbb55c8e474cf8f20e4c090bc32495c59132b64250086b7]
+[34m2026-09-28 10:35:43.539 UTC 64a3 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:37:41.392Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=2.146271086s
+[34m2026-09-28 10:35:43.580 UTC 64a4 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: voting duration: 28ms channel=votingchannel txID=8725cf44
+[34m2026-09-28 10:35:43.683 UTC 64a5 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2026-09-28T10:36:13.548Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=133.839926ms
+[34m2026-09-28 10:35:43.688 UTC 64a6 INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=8725cf44f162bfac002c397de7ffa47fdf8b8140f3a8418fe77ee07524eeeb61 endpoint=orderer2.orgorderer.example.com:8050
+[34m2026-09-28 10:35:43.689 UTC 64a7 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2026-09-28T10:35:53.686Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=1.795315ms
+[34m2026-09-28 10:35:45.700 UTC 64a8 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [3000] from buffer channel=votingchannel
+[34m2026-09-28 10:35:45.701 UTC 64a9 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [votingchannel] Validated block [3000] in 1ms
+[34m2026-09-28 10:35:45.828 UTC 64aa INFO[0m [kvledger] [34;1mcommit[0m -> [votingchannel] Committed block [3000] with 1 transaction(s) in 126ms (state_validation=8ms block_and_pvtdata_commit=5ms state_commit=110ms) commitHash=[e4d15fbd2ef75dc07c9e72f674f996d885808af742b3253b3cc9cc0ff3e39217]
+[34m2026-09-28 10:35:45.829 UTC 64ab INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2026-09-28T10:37:43.694Z grpc.peer_address=172.18.0.1:60474 grpc.code=OK grpc.call_duration=2.133753244s
